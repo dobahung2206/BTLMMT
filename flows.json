@@ -43,51 +43,51 @@
         "theme": {
             "name": "theme-dark",
             "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif",
+                "default": "#00d2ff",
+                "baseColor": "#00d2ff",
+                "baseFont": "'Plus Jakarta Sans', sans-serif",
                 "edited": true
             },
             "darkTheme": {
-                "default": "#0284c7",
-                "baseColor": "#0284c7",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif",
+                "default": "#00d2ff",
+                "baseColor": "#00d2ff",
+                "baseFont": "'Plus Jakarta Sans', sans-serif",
                 "edited": true
             },
             "customTheme": {
-                "name": "SCADA Dark",
-                "default": "#38bdf8",
-                "baseColor": "#38bdf8",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif"
+                "name": "Cyber Neon SCADA",
+                "default": "#00d2ff",
+                "baseColor": "#00d2ff",
+                "baseFont": "'Plus Jakarta Sans', sans-serif"
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0284c7",
-                    "value": "#0284c7",
+                    "default": "#00d2ff",
+                    "value": "#00d2ff",
                     "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0f172a",
+                    "value": "#060a14",
                     "edited": true
                 },
                 "page-backgroundColor": {
-                    "value": "#0b0f19",
+                    "value": "#060a14",
                     "edited": true
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#0f172a",
+                    "value": "#060a14",
                     "edited": true
                 },
                 "group-textColor": {
-                    "value": "#38bdf8",
+                    "value": "#00d2ff",
                     "edited": true
                 },
                 "group-borderColor": {
-                    "value": "#1e293b",
+                    "value": "rgba(0, 210, 255, 0.2)",
                     "edited": true
                 },
                 "group-backgroundColor": {
-                    "value": "#151e2e",
+                    "value": "#090e1d",
                     "edited": true
                 },
                 "widget-textColor": {
@@ -95,15 +95,15 @@
                     "edited": true
                 },
                 "widget-backgroundColor": {
-                    "value": "#1e293b",
+                    "value": "#0f172a",
                     "edited": true
                 },
                 "widget-borderColor": {
-                    "value": "#334155",
+                    "value": "rgba(0, 210, 255, 0.2)",
                     "edited": true
                 },
                 "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif"
+                    "value": "'Plus Jakarta Sans', sans-serif"
                 }
             },
             "angularTheme": {
@@ -115,7 +115,7 @@
             }
         },
         "site": {
-            "name": "HỆ THỐNG PHÂN LOẠI SẢN PHẨM - SCADA IOT",
+            "name": "HỆ THỐNG ĐIỀU KHIỂN & GIÁM SÁT THÔNG MINH",
             "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
@@ -141,38 +141,6 @@
         "order": 1,
         "disabled": false,
         "hidden": false
-    },
-    {
-        "id": "dee446f26611a13d",
-        "type": "ui_group",
-        "name": "Điều khiển Băng chuyền",
-        "tab": "b4889bf6eafe91c5",
-        "order": 1,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "e6dff874e861072e",
-        "type": "ui_spacer",
-        "z": "8db70ae311f732e1",
-        "name": "spacer",
-        "group": "dee446f26611a13d",
-        "order": 3,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "b67a1249b6d85a11",
-        "type": "ui_group",
-        "name": "Thống kê sản lượng",
-        "tab": "b4889bf6eafe91c5",
-        "order": 2,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
     },
     {
         "id": "bc97ec40ddf69903",
@@ -202,7 +170,8 @@
         "y": 80,
         "wires": [
             [
-                "c8314e6b21da4320"
+                "c8314e6b21da4320",
+                "b1c2d3e4f5a60014"
             ],
             [
                 "3df89b7a93e9c749"
@@ -280,7 +249,8 @@
         "wires": [
             [
                 "0f08c478c2b64afa",
-                "a1b2c3d4e5f60003"
+                "a1b2c3d4e5f60003",
+                "b1c2d3e4f5a60010"
             ],
             []
         ]
@@ -507,90 +477,11 @@
         ]
     },
     {
-        "id": "9cbc96608dac920d",
-        "type": "ui_button",
-        "z": "8db70ae311f732e1",
-        "name": "",
-        "group": "dee446f26611a13d",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Bật",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "[true]",
-        "payloadType": "json",
-        "topic": "conveyor_cmd",
-        "topicType": "msg",
-        "x": 650,
-        "y": 380,
-        "wires": [
-            [
-                "a01eb95a6d295e54",
-                "a1b2c3d4e5f60003"
-            ]
-        ]
-    },
-    {
-        "id": "7cd56f5c0a728784",
-        "type": "ui_button",
-        "z": "8db70ae311f732e1",
-        "name": "",
-        "group": "dee446f26611a13d",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Tắt",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "[false]",
-        "payloadType": "json",
-        "topic": "conveyor_cmd",
-        "topicType": "msg",
-        "x": 650,
-        "y": 460,
-        "wires": [
-            [
-                "a01eb95a6d295e54",
-                "a1b2c3d4e5f60003"
-            ]
-        ]
-    },
-    {
-        "id": "3df89b7a93e9c749",
-        "type": "ui_text",
-        "z": "8db70ae311f732e1",
-        "group": "dee446f26611a13d",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Hiển thị",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 300,
-        "y": 280,
-        "wires": []
-    },
-    {
         "id": "c8314e6b21da4320",
         "type": "function",
         "z": "8db70ae311f732e1",
         "name": "Bộ đếm & Lọc sườn lên",
-        "func": "// Khởi tạo các biến nếu chưa có\nlet metalCount = flow.get('metalCount') || 0;\nlet totalCount = flow.get('totalCount') || 0;\nlet lastState = context.get('lastState') || false;\n\n// 1. Xử lý nút Reset\nif (msg.topic === \"reset\" || msg.payload === \"reset\") {\n    metalCount = 0;\n    totalCount = 0;\n    flow.set('metalCount', 0);\n    flow.set('totalCount', 0);\n    context.set('lastState', false);\n    return [\n        { payload: 0, topic: \"metal\" },     // Out 1: SP Kim loại\n        { payload: 0, topic: \"total\" },     // Out 2: Tổng sản phẩm\n        null                                // Out 3: Kích hoạt Solenoid\n    ];\n}\n\n// 2. Xử lý nút Giả lập SP Phi kim (Demo)\nif (msg.topic === \"non_metal\" || msg.payload === \"non_metal\") {\n    totalCount += 1;\n    flow.set('totalCount', totalCount);\n    return [\n        null,\n        { payload: totalCount, topic: \"total\" },\n        null\n    ];\n}\n\n// 3. Xử lý tín hiệu cảm biến IN1 hoặc nút test kim loại\nlet isMetal = false;\nif (Array.isArray(msg.payload)) {\n    isMetal = Boolean(msg.payload[0]);\n} else if (typeof msg.payload === \"boolean\") {\n    isMetal = msg.payload;\n}\n\n// Phát hiện sườn lên (Rising Edge: false -> true)\nif (isMetal && !lastState) {\n    context.set('lastState', true);\n    metalCount += 1;\n    totalCount += 1;\n    flow.set('metalCount', metalCount);\n    flow.set('totalCount', totalCount);\n    \n    return [\n        { payload: metalCount, topic: \"metal\" },   // Out 1: SP Kim loại\n        { payload: totalCount, topic: \"total\" },   // Out 2: Tổng sản phẩm\n        { payload: [true], topic: \"trigger\" }      // Out 3: Kích hoạt Solenoid\n    ];\n} else if (!isMetal) {\n    context.set('lastState', false);\n}\n\nreturn null;",
+        "func": "// Khởi tạo các biến nếu chưa có\nlet metalCount = flow.get('metalCount') || 0;\nlet totalCount = flow.get('totalCount') || 0;\nlet lastState = context.get('lastState') || false;\n\n// 1. TUYỆT ĐỐI BỎ QUA CÁC LỆNH ĐIỀU KHIỂN BĂNG TẢI, NGẮT KẾT NỐI, CLEAR LOG\nif (msg.topic === \"conveyor_cmd\" || msg.topic === \"simulate_disconnect\" || msg.topic === \"clear_log\") {\n    return null;\n}\n\n// 2. Xử lý nút Reset\nif (msg.topic === \"reset\" || msg.payload === \"reset\") {\n    metalCount = 0;\n    totalCount = 0;\n    flow.set('metalCount', 0);\n    flow.set('totalCount', 0);\n    context.set('lastState', false);\n    return [\n        { payload: 0, topic: \"metal\" },     // Out 1: SP Kim loại\n        { payload: 0, topic: \"total\" },     // Out 2: Tổng sản phẩm\n        null                                // Out 3: Kích hoạt Solenoid\n    ];\n}\n\n// 3. Xử lý nút Thả SP Phi kim\nif (msg.topic === \"non_metal\" || msg.payload === \"non_metal\") {\n    totalCount += 1;\n    flow.set('totalCount', totalCount);\n    return [\n        null,\n        { payload: totalCount, topic: \"total\" },\n        null\n    ];\n}\n\n// 4. Xử lý Thả Kim loại giả lập hoặc Cảm biến IN1 thật\nlet isMetal = false;\nlet isSimulated = (msg.topic === \"simulate_metal\");\n\nif (isSimulated) {\n    isMetal = true;\n} else if (msg.topic === \"\" || msg.topic === \"sensor\" || !msg.topic) {\n    // Chỉ đọc từ cảm biến thực tế khi topic rỗng hoặc là sensor\n    if (Array.isArray(msg.payload)) {\n        isMetal = Boolean(msg.payload[0]);\n    } else if (typeof msg.payload === \"boolean\") {\n        isMetal = msg.payload;\n    }\n}\n\n// Kích hoạt khi có sườn lên (hoặc khi bấm nút Giả lập Thả kim loại)\nif (isMetal && (!lastState || isSimulated)) {\n    if (!isSimulated) context.set('lastState', true);\n    metalCount += 1;\n    totalCount += 1;\n    flow.set('metalCount', metalCount);\n    flow.set('totalCount', totalCount);\n    \n    return [\n        { payload: metalCount, topic: \"metal\" },   // Out 1: SP Kim loại\n        { payload: totalCount, topic: \"total\" },   // Out 2: Tổng sản phẩm\n        { payload: [true], topic: \"trigger\" }      // Out 3: Kích hoạt Solenoid\n    ];\n} else if (!isMetal && !isSimulated) {\n    context.set('lastState', false);\n}\n\nreturn null;",
         "outputs": 3,
         "timeout": 0,
         "noerr": 0,
@@ -601,12 +492,10 @@
         "y": 140,
         "wires": [
             [
-                "f1a923d8c1e40a12",
-                "e2b834a9d2f51b23",
-                "a1b2c3d4e5f60003"
+                "a1b2c3d4e5f60098"
             ],
             [
-                "d3c945b0e3a62c34"
+                "a1b2c3d4e5f60098"
             ],
             [
                 "667bdb838ac3ae9d"
@@ -614,161 +503,11 @@
         ]
     },
     {
-        "id": "f1a923d8c1e40a12",
-        "type": "ui_gauge",
-        "z": "8db70ae311f732e1",
-        "name": "Đồng hồ sản lượng kim loại",
-        "group": "b67a1249b6d85a11",
-        "order": 1,
-        "width": 6,
-        "height": 4,
-        "gtype": "gage",
-        "title": "Sản lượng Kim loại",
-        "label": "chiếc",
-        "format": "{{value}}",
-        "min": 0,
-        "max": 50,
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "20",
-        "seg2": "40",
-        "diff": false,
-        "className": "",
-        "x": 640,
-        "y": 20,
-        "wires": []
-    },
-    {
-        "id": "e2b834a9d2f51b23",
-        "type": "ui_text",
-        "z": "8db70ae311f732e1",
-        "group": "b67a1249b6d85a11",
-        "order": 2,
-        "width": 6,
-        "height": 1,
-        "name": "SP Kim loại",
-        "label": "SP Kim loại (đã phân loại):",
-        "format": "{{msg.payload}} chiếc",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#0094ce",
-        "x": 650,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "d3c945b0e3a62c34",
-        "type": "ui_text",
-        "z": "8db70ae311f732e1",
-        "group": "b67a1249b6d85a11",
-        "order": 3,
-        "width": 6,
-        "height": 1,
-        "name": "Tổng số SP",
-        "label": "Tổng sản phẩm:",
-        "format": "{{msg.payload}} chiếc",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#333333",
-        "x": 630,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "a4d056c1f4b73d45",
-        "type": "ui_button",
-        "z": "8db70ae311f732e1",
-        "name": "Đặt lại bộ đếm",
-        "group": "b67a1249b6d85a11",
-        "order": 4,
-        "width": 6,
-        "height": 1,
-        "passthru": false,
-        "label": "Đặt lại bộ đếm (Reset)",
-        "tooltip": "Xóa số đếm về 0",
-        "color": "#ffffff",
-        "bgcolor": "#d9534f",
-        "className": "",
-        "icon": "fa-refresh",
-        "payload": "reset",
-        "payloadType": "str",
-        "topic": "reset",
-        "topicType": "str",
-        "x": 130,
-        "y": 140,
-        "wires": [
-            [
-                "c8314e6b21da4320",
-                "a1b2c3d4e5f60003"
-            ]
-        ]
-    },
-    {
-        "id": "95e167d2a5c84e56",
-        "type": "ui_button",
-        "z": "8db70ae311f732e1",
-        "name": "Thêm SP Phi kim",
-        "group": "dee446f26611a13d",
-        "order": 5,
-        "width": 6,
-        "height": 1,
-        "passthru": false,
-        "label": "Đếm SP Phi kim (Demo)",
-        "tooltip": "Giả lập sản phẩm không phải kim loại",
-        "color": "#ffffff",
-        "bgcolor": "#337ab7",
-        "className": "",
-        "icon": "fa-plus",
-        "payload": "non_metal",
-        "payloadType": "str",
-        "topic": "non_metal",
-        "topicType": "str",
-        "x": 130,
-        "y": 260,
-        "wires": [
-            [
-                "c8314e6b21da4320",
-                "a1b2c3d4e5f60003"
-            ]
-        ]
-    },
-    {
-        "id": "a1b2c3d4e5f60001",
-        "type": "ui_group",
-        "name": "Trạng thái & Đèn tháp SCADA",
-        "tab": "b4889bf6eafe91c5",
-        "order": 3,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "a1b2c3d4e5f60002",
-        "type": "ui_group",
-        "name": "Nhật ký vận hành & Báo cáo",
-        "tab": "b4889bf6eafe91c5",
-        "order": 4,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "a1b2c3d4e5f60003",
         "type": "function",
         "z": "8db70ae311f732e1",
         "name": "Quản lý Trạng thái & Nhật ký SCADA",
-        "func": "// Quản lý Trạng thái & Nhật ký SCADA\nlet state = flow.get('scada_state') || 'STOPPED';\nlet statusText = flow.get('scada_statusText') || 'Hệ thống đang dừng';\nlet conveyorRunning = flow.get('conveyorRunning') || false;\nlet metalCount = flow.get('metalCount') || 0;\nlet totalCount = flow.get('totalCount') || 0;\nlet eventLog = flow.get('eventLog') || [];\n\nlet now = new Date();\nlet timeStr = now.toTimeString().split(' ')[0];\nlet soundTrigger = null;\n\nfunction addEvent(tag, tagType, text) {\n    eventLog.unshift({\n        time: timeStr,\n        tag: tag,\n        tagType: tagType,\n        text: text,\n        metal: flow.get('metalCount') || metalCount,\n        total: flow.get('totalCount') || totalCount\n    });\n    if (eventLog.length > 50) eventLog.pop();\n    flow.set('eventLog', eventLog);\n}\n\n// 1. Điều khiển Băng chuyền\nif (msg.topic === 'conveyor_cmd') {\n    let run = false;\n    if (Array.isArray(msg.payload)) run = Boolean(msg.payload[0]);\n    else run = Boolean(msg.payload);\n\n    if (run) {\n        conveyorRunning = true;\n        state = 'RUNNING';\n        statusText = 'Băng chuyền đang hoạt động';\n        soundTrigger = 'beep';\n        addEvent('START', 'success', 'Khởi động băng chuyền vận hành');\n    } else {\n        conveyorRunning = false;\n        state = 'STOPPED';\n        statusText = 'Băng chuyền đã dừng';\n        soundTrigger = 'beep';\n        addEvent('STOP', 'danger', 'Dừng băng chuyền an toàn');\n    }\n}\n\n// 2. Solenoid kích hoạt (Bật Solenoid qua node 440cbdde9bf30775)\nelse if (msg.topic === 'solenoid_on' || (msg.payload && msg.payload[0] === true && msg.adr === 1)) {\n    state = 'SORTING';\n    statusText = 'Đang kích hoạt van Solenoid gạt kim loại';\n    soundTrigger = 'chime';\n    addEvent('GẠT SP', 'warning', 'Kích hoạt Solenoid phân loại sản phẩm kim loại');\n}\n\n// 3. Solenoid thu hồi (node 9104baf60cd4e3aa đặt payload = false)\nelse if (msg.topic === 'solenoid_off' || msg.payload === false) {\n    state = conveyorRunning ? 'RUNNING' : 'STOPPED';\n    statusText = conveyorRunning ? 'Băng chuyền đang hoạt động' : 'Băng chuyền đã dừng';\n    addEvent('THU HỒI', 'info', 'Thu hồi xi-lanh Solenoid về vị trí chờ');\n}\n\n// 4. Sự kiện đếm Kim loại\nelse if (msg.topic === 'metal') {\n    metalCount = msg.payload;\n    if (metalCount > 0) {\n        state = 'SORTING';\n        statusText = 'Phát hiện sản phẩm kim loại #' + metalCount;\n        soundTrigger = 'chime';\n        addEvent('KIM LOẠI', 'warning', 'Cảm biến IN1 phát hiện SP kim loại #' + metalCount);\n    }\n}\n\n// 5. Sự kiện bấm Thêm SP Phi kim\nelse if (msg.topic === 'non_metal') {\n    totalCount = flow.get('totalCount') || 0;\n    soundTrigger = 'beep';\n    addEvent('PHI KIM', 'primary', 'Ghi nhận SP phi kim qua băng chuyền');\n}\n\n// 6. Sự kiện Reset\nelse if (msg.topic === 'reset') {\n    metalCount = 0;\n    totalCount = 0;\n    soundTrigger = 'beep';\n    addEvent('RESET', 'danger', 'Đã đặt lại toàn bộ bộ đếm sản phẩm về 0');\n}\n\n// 7. Lệnh xóa nhật ký từ UI\nelse if (msg.topic === 'clear_log') {\n    eventLog = [];\n    flow.set('eventLog', eventLog);\n    addEvent('DỌN DẸP', 'info', 'Đã xóa toàn bộ nhật ký vận hành');\n}\n\n// Lưu trạng thái\nflow.set('scada_state', state);\nflow.set('scada_statusText', statusText);\nflow.set('conveyorRunning', conveyorRunning);\n\nmsg.payload = {\n    state: state,\n    statusText: statusText,\n    conveyorRunning: conveyorRunning,\n    metalCount: flow.get('metalCount') || 0,\n    totalCount: flow.get('totalCount') || 0,\n    events: eventLog,\n    soundTrigger: soundTrigger,\n    time: timeStr\n};\n\nreturn msg;",
+        "func": "// Quản lý Trạng thái & Nhật ký SCADA\nlet state = flow.get('scada_state') || 'STOPPED';\nlet statusText = flow.get('scada_statusText') || 'Hệ thống đang dừng';\nlet conveyorRunning = flow.get('conveyorRunning') || false;\nlet metalCount = flow.get('metalCount') || 0;\nlet totalCount = flow.get('totalCount') || 0;\nlet eventLog = flow.get('eventLog') || [];\n\nlet now = new Date();\nlet timeStr = now.toTimeString().split(' ')[0];\nlet soundTrigger = null;\n\nfunction addEvent(tag, tagType, text) {\n    eventLog.unshift({\n        time: timeStr,\n        tag: tag,\n        tagType: tagType,\n        text: text,\n        metal: flow.get('metalCount') || metalCount,\n        total: flow.get('totalCount') || totalCount\n    });\n    if (eventLog.length > 50) eventLog.pop();\n    flow.set('eventLog', eventLog);\n}\n\n// 1. Điều khiển Băng chuyền (BẬT / TẮT)\nif (msg.topic === 'conveyor_cmd') {\n    let run = false;\n    if (Array.isArray(msg.payload)) run = Boolean(msg.payload[0]);\n    else run = Boolean(msg.payload);\n\n    if (run) {\n        conveyorRunning = true;\n        state = 'RUNNING';\n        statusText = 'Băng chuyền đang hoạt động';\n        soundTrigger = 'beep';\n        addEvent('START', 'success', 'Khởi động băng tải vận hành');\n    } else {\n        conveyorRunning = false;\n        state = 'STOPPED';\n        statusText = 'Băng chuyền đã dừng';\n        soundTrigger = 'beep';\n        addEvent('STOP', 'danger', 'Dừng băng tải an toàn');\n    }\n}\n\n// 2. Sự kiện Thả Kim loại giả lập\nelse if (msg.topic === 'simulate_metal') {\n    state = 'SORTING';\n    statusText = 'Đang phân loại SP kim loại mới';\n    soundTrigger = 'chime';\n    addEvent('THẢ KIM LOẠI', 'warning', 'Thả SP kim loại vào băng chuyền');\n}\n\n// 3. Solenoid kích hoạt gạt\nelse if (msg.topic === 'solenoid_on' || (msg.payload && msg.payload[0] === true && msg.adr === 1)) {\n    state = 'SORTING';\n    statusText = 'Xi-lanh Solenoid đang đẩy gạt kim loại';\n    soundTrigger = 'chime';\n    addEvent('GẠT SP', 'warning', 'Solenoid kích hoạt gạt sản phẩm kim loại');\n}\n\n// 4. Solenoid thu hồi\nelse if (msg.topic === 'solenoid_off' || msg.payload === false) {\n    state = conveyorRunning ? 'RUNNING' : 'STOPPED';\n    statusText = conveyorRunning ? 'Băng chuyền đang hoạt động' : 'Băng chuyền đã dừng';\n    addEvent('THU HỒI', 'info', 'Thu hồi Solenoid về vị trí chờ');\n}\n\n// 5. Cảm biến phát hiện kim loại\nelse if (msg.topic === 'metal') {\n    metalCount = msg.payload;\n    if (metalCount > 0) {\n        state = 'SORTING';\n        statusText = 'Cảm biến IN1 phát hiện SP kim loại #' + metalCount;\n        soundTrigger = 'chime';\n        addEvent('KIM LOẠI', 'warning', 'Cảm biến IN1 phát hiện kim loại #' + metalCount);\n    }\n}\n\n// 6. Thả Phi kim\nelse if (msg.topic === 'non_metal') {\n    totalCount = flow.get('totalCount') || 0;\n    soundTrigger = 'beep';\n    addEvent('PHI KIM', 'primary', 'Ghi nhận SP phi kim trôi qua băng tải');\n}\n\n// 7. Reset\nelse if (msg.topic === 'reset') {\n    metalCount = 0;\n    totalCount = 0;\n    soundTrigger = 'beep';\n    addEvent('RESET', 'danger', 'Đã đặt lại toàn bộ bộ đếm về 0');\n}\n\n// 8. Xóa log\nelse if (msg.topic === 'clear_log') {\n    eventLog = [];\n    flow.set('eventLog', eventLog);\n    addEvent('DỌN DẸP', 'info', 'Đã xóa toàn bộ nhật ký vận hành');\n}\n\n// Lưu trạng thái\nflow.set('scada_state', state);\nflow.set('scada_statusText', statusText);\nflow.set('conveyorRunning', conveyorRunning);\n\nmsg.payload = {\n    state: state,\n    statusText: statusText,\n    conveyorRunning: conveyorRunning,\n    metalCount: flow.get('metalCount') || 0,\n    totalCount: flow.get('totalCount') || 0,\n    events: eventLog,\n    soundTrigger: soundTrigger,\n    time: timeStr\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -779,8 +518,7 @@
         "y": 320,
         "wires": [
             [
-                "a1b2c3d4e5f60004",
-                "a1b2c3d4e5f60005"
+                "a1b2c3d4e5f60098"
             ]
         ]
     },
@@ -814,46 +552,113 @@
         ]
     },
     {
-        "id": "a1b2c3d4e5f60004",
-        "type": "ui_template",
+        "id": "b1c2d3e4f5a60014",
+        "type": "function",
         "z": "8db70ae311f732e1",
-        "group": "a1b2c3d4e5f60001",
-        "name": "Đèn tháp Andon & Âm thanh",
-        "order": 1,
-        "width": 6,
-        "height": 6,
-        "format": "\n<style>\n  /* Global SCADA Dark Improvements */\n  .scada-andon-box {\n    padding: 10px;\n    background: #111827;\n    border-radius: 12px;\n    border: 1px solid #1f2937;\n    box-shadow: 0 4px 15px rgba(0,0,0,0.4);\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n  }\n  .tower-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 16px;\n    margin: 15px 0;\n  }\n  .tower-stack {\n    display: flex;\n    flex-direction: column;\n    background: #030712;\n    padding: 8px 12px;\n    border-radius: 24px;\n    border: 2px solid #374151;\n    box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);\n    gap: 8px;\n    align-items: center;\n  }\n  .light-lamp {\n    width: 38px;\n    height: 38px;\n    border-radius: 50%;\n    transition: all 0.25s ease;\n    border: 2px solid rgba(255,255,255,0.1);\n  }\n  /* RED LAMP */\n  .lamp-red {\n    background: #450a0a;\n    opacity: 0.3;\n  }\n  .lamp-red.active {\n    background: #ef4444;\n    opacity: 1;\n    box-shadow: 0 0 22px #ef4444, inset 0 0 8px #ffffff;\n  }\n  /* YELLOW LAMP */\n  .lamp-yellow {\n    background: #422006;\n    opacity: 0.3;\n  }\n  .lamp-yellow.active {\n    background: #eab308;\n    opacity: 1;\n    box-shadow: 0 0 28px #eab308, inset 0 0 8px #ffffff;\n    animation: lampBlink 0.5s infinite alternate;\n  }\n  /* GREEN LAMP */\n  .lamp-green {\n    background: #052e16;\n    opacity: 0.3;\n  }\n  .lamp-green.active {\n    background: #22c55e;\n    opacity: 1;\n    box-shadow: 0 0 22px #22c55e, inset 0 0 8px #ffffff;\n  }\n  @keyframes lampBlink {\n    from { opacity: 0.6; filter: brightness(0.8); }\n    to { opacity: 1; filter: brightness(1.4); }\n  }\n  .status-badge {\n    text-align: center;\n    padding: 8px 14px;\n    border-radius: 8px;\n    font-weight: 700;\n    font-size: 14px;\n    letter-spacing: 0.5px;\n    margin-bottom: 8px;\n    transition: all 0.3s ease;\n  }\n  .status-stopped {\n    background: rgba(239, 68, 68, 0.15);\n    color: #fca5a5;\n    border: 1px solid #ef4444;\n  }\n  .status-running {\n    background: rgba(34, 197, 94, 0.15);\n    color: #86efac;\n    border: 1px solid #22c55e;\n  }\n  .status-sorting {\n    background: rgba(234, 179, 8, 0.2);\n    color: #fef08a;\n    border: 1px solid #eab308;\n    animation: statusPulse 0.8s infinite alternate;\n  }\n  @keyframes statusPulse {\n    from { box-shadow: 0 0 5px rgba(234,179,8,0.3); }\n    to { box-shadow: 0 0 15px rgba(234,179,8,0.7); }\n  }\n  .sound-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: #1f2937;\n    padding: 6px 12px;\n    border-radius: 6px;\n    font-size: 12px;\n    color: #9ca3af;\n  }\n  .sound-btn {\n    background: #374151;\n    color: #e5e7eb;\n    border: none;\n    padding: 3px 8px;\n    border-radius: 4px;\n    cursor: pointer;\n    font-size: 11px;\n  }\n  .sound-btn:hover {\n    background: #4b5563;\n  }\n</style>\n\n<div class=\"scada-andon-box\">\n  <div class=\"status-badge\" ng-class=\"{\n    'status-stopped': (!msg.payload || msg.payload.state === 'STOPPED'),\n    'status-running': (msg.payload && msg.payload.state === 'RUNNING'),\n    'status-sorting': (msg.payload && msg.payload.state === 'SORTING')\n  }\">\n    <span ng-if=\"!msg.payload || msg.payload.state === 'STOPPED'\">🔴 HỆ THỐNG: ĐANG DỪNG</span>\n    <span ng-if=\"msg.payload && msg.payload.state === 'RUNNING'\">🟢 HỆ THỐNG: ĐANG HOẠT ĐỘNG</span>\n    <span ng-if=\"msg.payload && msg.payload.state === 'SORTING'\">⚡ ĐANG PHÂN LOẠI KIM LOẠI</span>\n  </div>\n\n  <div class=\"tower-container\">\n    <div class=\"tower-stack\">\n      <div class=\"light-lamp lamp-red\" ng-class=\"{'active': (!msg.payload || msg.payload.state === 'STOPPED')}\" title=\"Đèn Đỏ: Dừng\"></div>\n      <div class=\"light-lamp lamp-yellow\" ng-class=\"{'active': (msg.payload && msg.payload.state === 'SORTING')}\" title=\"Đèn Vàng: Phân loại / Solenoid\"></div>\n      <div class=\"light-lamp lamp-green\" ng-class=\"{'active': (msg.payload && msg.payload.state === 'RUNNING')}\" title=\"Đèn Xanh: Hoạt động bình thường\"></div>\n    </div>\n    <div style=\"font-size: 12px; color: #9ca3af; line-height: 1.6;\">\n      <div><b style=\"color: #ef4444;\">Đỏ:</b> Băng chuyền dừng</div>\n      <div><b style=\"color: #eab308;\">Vàng:</b> Đang gạt Solenoid</div>\n      <div><b style=\"color: #22c55e;\">Xanh:</b> Vận hành bình thường</div>\n    </div>\n  </div>\n\n  <div class=\"sound-bar\">\n    <span>🔊 Âm thanh cảnh báo: <b ng-style=\"{'color': soundOn ? '#4ade80' : '#f87171'}\">{{soundOn ? 'BẬT' : 'TẮT'}}</b></span>\n    <div>\n      <button class=\"sound-btn\" ng-click=\"toggleSound()\">{{soundOn ? 'Tắt âm' : 'Bật âm'}}</button>\n      <button class=\"sound-btn\" ng-click=\"testChime()\" style=\"margin-left: 4px;\">Thử chuông</button>\n    </div>\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.soundOn = true;\n  var audioCtx = null;\n\n  function getAudioContext() {\n    if (!audioCtx) {\n      audioCtx = new (window.AudioContext || window.webkitAudioContext)();\n    }\n    if (audioCtx.state === 'suspended') {\n      audioCtx.resume();\n    }\n    return audioCtx;\n  }\n\n  function playTone(freq, type, duration, delay) {\n    if (!scope.soundOn) return;\n    try {\n      var ctx = getAudioContext();\n      var osc = ctx.createOscillator();\n      var gain = ctx.createGain();\n      var start = ctx.currentTime + (delay || 0);\n      osc.type = type || 'sine';\n      osc.frequency.setValueAtTime(freq, start);\n      gain.gain.setValueAtTime(0.12, start);\n      gain.gain.exponentialRampToValueAtTime(0.001, start + duration);\n      osc.connect(gain);\n      gain.connect(ctx.destination);\n      osc.start(start);\n      osc.stop(start + duration);\n    } catch(e) {}\n  }\n\n  scope.toggleSound = function() {\n    scope.soundOn = !scope.soundOn;\n  };\n\n  scope.testChime = function() {\n    playTone(880, 'sine', 0.12, 0);\n    playTone(1320, 'triangle', 0.22, 0.1);\n  };\n\n  scope.$watch('msg', function(val) {\n    if (val && val.payload && val.payload.soundTrigger) {\n      if (val.payload.soundTrigger === 'chime') {\n        playTone(880, 'sine', 0.12, 0);\n        playTone(1320, 'triangle', 0.22, 0.1);\n      } else if (val.payload.soundTrigger === 'beep') {\n        playTone(550, 'sine', 0.08, 0);\n      }\n    }\n  });\n})(scope);\n</script>\n",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 820,
-        "y": 280,
+        "name": "Gate Heartbeat ESP8266",
+        "func": "// Gate kiểm tra tín hiệu Heartbeat\nlet isBlocked = flow.get('heartbeat_blocked') || false;\n\nif (msg.topic === 'simulate_disconnect') {\n    isBlocked = Boolean(msg.payload);\n    flow.set('heartbeat_blocked', isBlocked);\n    if (isBlocked) {\n        // Đã ngắt: không gửi gì để node trigger hết 5s sẽ báo Timeout!\n        return null;\n    } else {\n        // Khôi phục: gửi ngay tín hiệu ping để trigger phục hồi Connected\n        return { payload: true, topic: 'heartbeat_ping' };\n    }\n}\n\n// Nếu nhận heartbeat định kỳ từ inject hoặc modbus\nif (!isBlocked) {\n    return { payload: true, topic: 'heartbeat_ping' };\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 540,
         "wires": [
-            []
+            [
+                "b1c2d3e4f5a60012"
+            ]
         ]
     },
     {
-        "id": "a1b2c3d4e5f60005",
+        "id": "b1c2d3e4f5a60012",
+        "type": "trigger",
+        "z": "8db70ae311f732e1",
+        "name": "Timeout Watchdog 5s",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "heartbeat_status",
+        "outputs": 1,
+        "x": 600,
+        "y": 540,
+        "wires": [
+            [
+                "a1b2c3d4e5f60098"
+            ]
+        ]
+    },
+    {
+        "id": "b1c2d3e4f5a60013",
+        "type": "inject",
+        "z": "8db70ae311f732e1",
+        "name": "Heartbeat ESP8266 2s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "heartbeat",
+        "payload": "ping",
+        "payloadType": "str",
+        "x": 170,
+        "y": 540,
+        "wires": [
+            [
+                "b1c2d3e4f5a60014"
+            ]
+        ]
+    },
+    {
+        "id": "a1b2c3d4e5f60099",
+        "type": "ui_group",
+        "name": "BẢNG ĐIỀU KHIỂN & CHỨC NĂNG THÔNG MINH",
+        "tab": "b4889bf6eafe91c5",
+        "order": 1,
+        "disp": false,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a1b2c3d4e5f60098",
         "type": "ui_template",
         "z": "8db70ae311f732e1",
-        "group": "a1b2c3d4e5f60002",
-        "name": "Bảng Nhật ký & Xuất CSV",
+        "group": "a1b2c3d4e5f60099",
+        "name": "Giao diện Cyber SCADA Chức năng",
         "order": 1,
-        "width": 6,
-        "height": 6,
-        "format": "\n<style>\n  .scada-log-box {\n    padding: 10px;\n    background: #111827;\n    border-radius: 12px;\n    border: 1px solid #1f2937;\n    box-shadow: 0 4px 15px rgba(0,0,0,0.4);\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n  }\n  .log-table-container {\n    height: 195px;\n    overflow-y: auto;\n    background: #090d16;\n    border-radius: 8px;\n    border: 1px solid #1f2937;\n    margin: 8px 0;\n    padding: 4px 6px;\n  }\n  /* Custom sleek scrollbar */\n  .log-table-container::-webkit-scrollbar {\n    width: 6px;\n  }\n  .log-table-container::-webkit-scrollbar-track {\n    background: #0b0f19;\n  }\n  .log-table-container::-webkit-scrollbar-thumb {\n    background: #374151;\n    border-radius: 3px;\n  }\n  .log-entry {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    padding: 5px 6px;\n    border-bottom: 1px solid #1a2234;\n    font-size: 12px;\n    animation: fadeIn 0.3s ease;\n  }\n  @keyframes fadeIn {\n    from { opacity: 0; transform: translateY(-4px); }\n    to { opacity: 1; transform: translateY(0); }\n  }\n  .log-time {\n    color: #94a3b8;\n    font-family: monospace;\n    font-size: 11px;\n    min-width: 55px;\n  }\n  .log-tag {\n    padding: 2px 6px;\n    border-radius: 4px;\n    font-size: 10px;\n    font-weight: 700;\n    text-transform: uppercase;\n    min-width: 50px;\n    text-align: center;\n  }\n  .tag-success { background: #065f46; color: #a7f3d0; }\n  .tag-danger  { background: #881337; color: #fecdd3; }\n  .tag-warning { background: #78350f; color: #fde68a; }\n  .tag-primary { background: #1e3a8a; color: #bfdbfe; }\n  .tag-info    { background: #155e75; color: #a5f3fc; }\n  .log-text {\n    color: #e2e8f0;\n    flex: 1;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n  .log-actions {\n    display: flex;\n    gap: 8px;\n    margin-top: 6px;\n  }\n  .btn-csv {\n    flex: 1;\n    background: linear-gradient(135deg, #0284c7, #0369a1);\n    color: white;\n    border: none;\n    padding: 7px 12px;\n    border-radius: 6px;\n    font-weight: 600;\n    font-size: 12px;\n    cursor: pointer;\n    transition: all 0.2s;\n  }\n  .btn-csv:hover {\n    background: linear-gradient(135deg, #0369a1, #075985);\n    box-shadow: 0 0 10px rgba(2,132,199,0.5);\n  }\n  .btn-clear {\n    background: #374151;\n    color: #d1d5db;\n    border: none;\n    padding: 7px 12px;\n    border-radius: 6px;\n    font-size: 12px;\n    cursor: pointer;\n  }\n  .btn-clear:hover {\n    background: #4b5563;\n  }\n  .empty-log {\n    text-align: center;\n    color: #64748b;\n    padding: 30px 10px;\n    font-size: 12px;\n  }\n</style>\n\n<div class=\"scada-log-box\">\n  <div style=\"display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; color: #38bdf8;\">\n    <span>📋 Nhật ký sự kiện thời gian thực</span>\n    <span style=\"font-size: 11px; color: #64748b;\">{{(msg.payload.events || []).length}} mục</span>\n  </div>\n\n  <div class=\"log-table-container\">\n    <div ng-if=\"!msg.payload.events || msg.payload.events.length === 0\" class=\"empty-log\">\n      Chưa có sự kiện nào. Hãy vận hành băng chuyền để ghi nhật ký!\n    </div>\n    <div class=\"log-entry\" ng-repeat=\"item in (msg.payload.events || []) track by $index\">\n      <span class=\"log-time\">{{item.time}}</span>\n      <span class=\"log-tag tag-{{item.tagType || 'info'}}\">{{item.tag}}</span>\n      <span class=\"log-text\" title=\"{{item.text}}\">{{item.text}}</span>\n    </div>\n  </div>\n\n  <div class=\"log-actions\">\n    <button class=\"btn-csv\" ng-click=\"downloadCSV()\">\n      📥 Xuất báo cáo (CSV / Excel)\n    </button>\n    <button class=\"btn-clear\" ng-click=\"clearLog()\" title=\"Xóa toàn bộ lịch sử\">\n      🗑️ Xóa log\n    </button>\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.downloadCSV = function() {\n    var events = (scope.msg && scope.msg.payload && scope.msg.payload.events) || [];\n    if (events.length === 0) {\n      alert('Chưa có dữ liệu nhật ký để xuất!');\n      return;\n    }\n    // Add UTF-8 BOM so Vietnamese displays correctly in Excel\n    var csvContent = '\\uFEFFThời gian,Phân loại,Nội dung chi tiết,SP Kim loại,Tổng sản phẩm\\r\\n';\n    for (var i = 0; i < events.length; i++) {\n      var e = events[i];\n      csvContent += '\"' + (e.time || '') + '\",\"' + \n                    (e.tag || '') + '\",\"' + \n                    (e.text || '').replace(/\"/g, '\"\"') + '\",\"' + \n                    (e.metal || 0) + '\",\"' + \n                    (e.total || 0) + '\"\\r\\n';\n    }\n    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });\n    var url = URL.createObjectURL(blob);\n    var a = document.createElement('a');\n    a.href = url;\n    var nowStr = new Date().toISOString().slice(0, 10);\n    a.download = 'BTLMMT_NhatKy_SanXuat_' + nowStr + '.csv';\n    document.body.appendChild(a);\n    a.click();\n    document.body.removeChild(a);\n    URL.revokeObjectURL(url);\n  };\n\n  scope.clearLog = function() {\n    scope.send({ topic: 'clear_log' });\n  };\n})(scope);\n</script>\n",
+        "width": 12,
+        "height": 12,
+        "format": "\n<style>\n  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');\n\n  /* MỞ RỘNG GIAO DIỆN TRÀN VIỀN (FULL-WIDTH 100VW - ZERO WASTED BORDERS) */\n  html, body, #nr-dashboard, md-content, .nr-dashboard-theme {\n    width: 100vw !important;\n    max-width: 100vw !important;\n    margin: 0 !important;\n    padding: 0 !important;\n    background-color: #060a14 !important;\n    background-image: \n      radial-gradient(circle at 50% 0px, rgba(0, 180, 255, 0.12) 0%, transparent 60%),\n      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),\n      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;\n    background-size: 100% 100%, 32px 32px, 32px 32px !important;\n    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;\n    color: #e2e8f0 !important;\n    overflow-x: hidden !important;\n  }\n\n  ui-card-panel, .grid-stack, .grid-stack-item, .nr-dashboard-card, md-card {\n    width: 100vw !important;\n    max-width: 100vw !important;\n    margin: 0 !important;\n    padding: 0 !important;\n    left: 0 !important;\n    right: 0 !important;\n    background: transparent !important;\n    box-shadow: none !important;\n    border: none !important;\n  }\n\n  .full-width-container {\n    width: 100vw;\n    max-width: 100vw;\n    padding: 8px 24px 20px 24px;\n    box-sizing: border-box;\n  }\n\n  /* TOP COMPACT NAVBAR */\n  .top-navbar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 8px 18px;\n    background: rgba(10, 16, 30, 0.85);\n    backdrop-filter: blur(12px);\n    border: 1px solid rgba(255, 255, 255, 0.08);\n    border-radius: 10px;\n    margin-bottom: 12px;\n  }\n  .user-badge {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    font-size: 13px;\n  }\n  .user-icon { color: #a855f7; font-size: 15px; }\n  .user-label { color: #94a3b8; }\n  .user-name { color: #38bdf8; font-weight: 700; }\n\n  .header-center-title {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n  }\n  .glow-title {\n    font-family: 'Orbitron', 'Plus Jakarta Sans', sans-serif;\n    font-size: 26px;\n    font-weight: 900;\n    color: #ffffff;\n    letter-spacing: 2px;\n    text-shadow: \n      0 0 10px rgba(56, 189, 248, 0.9),\n      0 0 25px rgba(56, 189, 248, 0.6),\n      0 0 45px rgba(56, 189, 248, 0.35);\n  }\n  .sub-title-text {\n    font-size: 13px;\n    color: #94a3b8;\n    font-weight: 400;\n  }\n\n  .system-status-chip {\n    font-size: 12px;\n    font-weight: 600;\n    padding: 4px 12px;\n    border-radius: 6px;\n    background: rgba(16, 185, 129, 0.12);\n    border: 1px solid rgba(16, 185, 129, 0.35);\n    color: #34d399;\n  }\n\n  /* SPLIT WORKSPACE: BÊN TRÁI THAO TÁC - BÊN PHẢI BĂNG CHUYỀN */\n  .split-workspace {\n    display: grid;\n    grid-template-columns: 1fr 1.15fr;\n    gap: 20px;\n    align-items: start;\n  }\n  @media (max-width: 1024px) {\n    .split-workspace { grid-template-columns: 1fr; }\n  }\n\n  /* ========================================================= */\n  /* CỘT TRÁI: TOÀN BỘ CÁC THAO TÁC BẤM CHỨC NĂNG             */\n  /* ========================================================= */\n  .left-panel {\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n  }\n\n  /* Mini Hardware Sensors Strip (Chỉ hiển thị, không làm nút bấm) */\n  .sensors-strip {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n    background: #090e1c;\n    border: 1px solid rgba(56, 189, 248, 0.16);\n    border-radius: 10px;\n    padding: 8px 12px;\n  }\n  .sensor-pill {\n    display: flex;\n    flex-direction: column;\n    gap: 2px;\n  }\n  .pill-lbl {\n    font-size: 9px;\n    font-weight: 700;\n    color: #94a3b8;\n    letter-spacing: 0.5px;\n    text-transform: uppercase;\n  }\n  .pill-val {\n    font-size: 12px;\n    font-weight: 700;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n\n  /* NÚT TOGGLE BẬT / TẮT BĂNG TẢI (LỚN, RỘNG TOÀN HÀNG ĐẦU) */\n  .toggle-conveyor-card {\n    background: #0b1222;\n    border: 1px solid rgba(56, 189, 248, 0.18);\n    border-radius: 14px;\n    padding: 14px 18px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    cursor: pointer;\n    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);\n    user-select: none;\n    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);\n  }\n  .toggle-conveyor-card:hover {\n    border-color: rgba(0, 210, 255, 0.5);\n    transform: translateY(-2px);\n    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);\n  }\n  /* ACTIVE GLOW KHI ĐANG CHẠY (HOẶC KHI CLICK ĐÚNG NHƯ ẢNH 2) */\n  .toggle-conveyor-card.running {\n    border: 2px solid #00d2ff !important;\n    box-shadow: 0 0 28px rgba(0, 210, 255, 0.45), inset 0 0 14px rgba(0, 210, 255, 0.15) !important;\n    background: #0d172e;\n  }\n\n  .toggle-left {\n    display: flex;\n    align-items: center;\n    gap: 14px;\n  }\n  .toggle-icon-box {\n    width: 48px;\n    height: 48px;\n    border-radius: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-shrink: 0;\n    transition: all 0.25s;\n  }\n  .toggle-icon-box svg { width: 24px; height: 24px; fill: currentColor; }\n  .toggle-title {\n    font-size: 15px;\n    font-weight: 700;\n    color: #f8fafc;\n    margin-bottom: 2px;\n  }\n  .toggle-desc {\n    font-size: 11px;\n    color: #94a3b8;\n  }\n  .toggle-switch-badge {\n    padding: 6px 16px;\n    border-radius: 20px;\n    font-size: 12px;\n    font-weight: 700;\n    display: flex;\n    align-items: center;\n    gap: 6px;\n  }\n\n  /* Action Grid (2 Hàng x 2 Cột = 4 Nút hành động còn lại) */\n  .action-grid-2x2 {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    gap: 10px;\n  }\n\n  .action-card {\n    background: #0b1222;\n    border: 1px solid rgba(56, 189, 248, 0.14);\n    border-radius: 12px;\n    padding: 12px 14px;\n    display: flex;\n    align-items: center;\n    gap: 12px;\n    cursor: pointer;\n    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);\n    user-select: none;\n    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);\n  }\n  .action-card:hover {\n    border-color: rgba(0, 210, 255, 0.45);\n    transform: translateY(-2px);\n    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);\n  }\n  .action-card:active { transform: translateY(1px); }\n\n  /* SÁNG VIỀN CYAN NEON RỰC RỠ Y HỆT ẢNH 2 */\n  .action-card.active {\n    border: 2px solid #00d2ff !important;\n    box-shadow: 0 0 25px rgba(0, 210, 255, 0.45), inset 0 0 12px rgba(0, 210, 255, 0.15) !important;\n    transform: translateY(-2px);\n    background: #0d172e;\n  }\n  .action-card.active .card-icon-box {\n    border-color: #00d2ff !important;\n    box-shadow: 0 0 14px rgba(0, 210, 255, 0.6) !important;\n  }\n\n  .card-icon-box {\n    width: 44px;\n    height: 44px;\n    border-radius: 10px;\n    border: 1.5px solid rgba(0, 210, 255, 0.35);\n    background: rgba(0, 210, 255, 0.06);\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-shrink: 0;\n    transition: all 0.22s ease;\n  }\n  .card-icon-box svg { width: 22px; height: 22px; fill: currentColor; }\n\n  .card-content { flex-grow: 1; overflow: hidden; }\n  .card-title {\n    font-size: 14px;\n    font-weight: 700;\n    color: #f8fafc;\n    margin: 0 0 2px 0;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n  .card-desc {\n    font-size: 11px;\n    color: #94a3b8;\n    margin: 0 0 6px 0;\n    line-height: 1.3;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n\n  /* Status Pills */\n  .status-pill {\n    display: inline-flex;\n    align-items: center;\n    gap: 4px;\n    padding: 2px 8px;\n    border-radius: 9999px;\n    font-size: 10px;\n    font-weight: 600;\n  }\n  .pill-green { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }\n  .pill-blue  { background: rgba(0, 210, 255, 0.14); color: #38bdf8; border: 1px solid rgba(0, 210, 255, 0.4); }\n  .pill-amber { background: rgba(245, 158, 11, 0.14); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }\n  .pill-red   { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }\n  .pill-purple{ background: rgba(168, 85, 247, 0.14); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.35); }\n  .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }\n\n  /* ========================================================= */\n  /* CỘT PHẢI: MÔ HÌNH BĂNG CHUYỀN & GIÁM SÁT (RIGHT PANEL)    */\n  /* ========================================================= */\n  .right-panel {\n    background: #090e1d;\n    border: 1px solid rgba(56, 189, 248, 0.2);\n    border-radius: 12px;\n    padding: 12px 14px;\n    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n  }\n\n  .right-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    border-bottom: 1px solid rgba(255, 255, 255, 0.08);\n    padding-bottom: 6px;\n  }\n  .right-title {\n    font-family: 'Orbitron', sans-serif;\n    font-size: 13px;\n    font-weight: 700;\n    color: #38bdf8;\n    letter-spacing: 0.5px;\n  }\n  .conveyor-badge { font-size: 11px; font-weight: 700; }\n\n  /* Khung SVG Băng Chuyền */\n  .conveyor-svg-box {\n    background: #060a14;\n    border-radius: 10px;\n    border: 1px solid rgba(56, 189, 248, 0.18);\n    padding: 6px 10px;\n    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.7);\n  }\n\n  /* 3 KPI Boxes Hàng Ngang */\n  .kpi-row {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n  }\n  .kpi-box {\n    background: #0c1426;\n    border: 1px solid rgba(56, 189, 248, 0.15);\n    border-radius: 10px;\n    padding: 8px 10px;\n    text-align: center;\n  }\n  .kpi-lbl {\n    font-size: 10px;\n    color: #94a3b8;\n    font-weight: 600;\n    letter-spacing: 0.5px;\n    margin-bottom: 2px;\n  }\n  .kpi-val {\n    font-family: 'Orbitron', monospace;\n    font-size: 20px;\n    font-weight: 800;\n  }\n\n  /* Mini Log & Action */\n  .mini-log-box {\n    background: #070c17;\n    border: 1px solid rgba(255, 255, 255, 0.06);\n    border-radius: 8px;\n    padding: 8px 10px;\n  }\n  .mini-log-head {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 11px;\n    font-weight: 700;\n    color: #38bdf8;\n    margin-bottom: 6px;\n  }\n  .log-btns { display: flex; gap: 6px; }\n  .mini-btn {\n    background: #1e293b;\n    border: 1px solid #334155;\n    color: #cbd5e1;\n    font-size: 10px;\n    font-weight: 600;\n    padding: 2px 8px;\n    border-radius: 4px;\n    cursor: pointer;\n    transition: all 0.2s;\n  }\n  .mini-btn:hover { background: #38bdf8; color: #090e1d; }\n  .mini-log-body {\n    height: 80px;\n    overflow-y: auto;\n    font-size: 11px;\n    font-family: monospace;\n  }\n  .log-row {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    padding: 2px 4px;\n    border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n  }\n  .log-row .time { color: #64748b; font-size: 10px; }\n  .log-row .tag {\n    padding: 1px 4px;\n    border-radius: 3px;\n    font-size: 9px;\n    font-weight: 700;\n  }\n  .tag-START { background: #065f46; color: #6ee7b7; }\n  .tag-STOP  { background: #881337; color: #fca5a5; }\n  .tag-METAL { background: #78350f; color: #fde68a; }\n  .tag-PASS  { background: #1e3a8a; color: #bfdbfe; }\n  .tag-RESET { background: #581c87; color: #e9d5ff; }\n  .log-row .msg { color: #cbd5e1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n</style>\n\n<div class=\"full-width-container\">\n  <!-- TOP COMPACT NAVBAR -->\n  <div class=\"top-navbar\">\n    <div class=\"user-badge\">\n      <span class=\"user-icon\">👤</span>\n      <span class=\"user-label\">Người đang điều khiển:</span>\n      <span class=\"user-name\">sune</span>\n    </div>\n    <div class=\"header-center-title\">\n      <span class=\"glow-title\">Chức năng</span>\n      <span class=\"sub-title-text\">- Hệ thống điều khiển & Giám sát thông minh</span>\n    </div>\n    <div class=\"system-status-chip\">\n      ● {{connected ? 'ESP8266 Sẵn sàng' : 'ESP8266 Mất kết nối'}}\n    </div>\n  </div>\n\n  <!-- SPLIT WORKSPACE: BÊN TRÁI THAO TÁC - BÊN PHẢI BĂNG CHUYỀN -->\n  <div class=\"split-workspace\">\n    \n    <!-- ============================================== -->\n    <!-- CỘT TRÁI: TOÀN BỘ CÁC NÚT THAO TÁC BẤM CHỨC NĂNG -->\n    <!-- ============================================== -->\n    <div class=\"left-panel\">\n      <!-- Thanh cảm biến giám sát nhỏ gọn (Chỉ hiển thị, không làm nút bấm) -->\n      <div class=\"sensors-strip\">\n        <div class=\"sensor-pill\">\n          <span class=\"pill-lbl\">CẢM BIẾN IN1:</span>\n          <span class=\"pill-val\" style=\"color: {{sensorActive ? '#f59e0b' : '#38bdf8'}};\">\n            {{sensorActive ? '⚡ KIM LOẠI' : 'Đang quét (100ms)'}}\n          </span>\n        </div>\n        <div class=\"sensor-pill\">\n          <span class=\"pill-lbl\">SOLENOID:</span>\n          <span class=\"pill-val\" style=\"color: {{solenoidActive ? '#f59e0b' : '#94a3b8'}};\">\n            {{solenoidActive ? '⚡ ĐANG GẠT' : 'Vị trí chờ'}}\n          </span>\n        </div>\n        <div class=\"sensor-pill\">\n          <span class=\"pill-lbl\">ĐỘNG CƠ:</span>\n          <span class=\"pill-val\" style=\"color: {{conveyorRunning ? '#10b981' : '#ef4444'}};\">\n            {{conveyorRunning ? '● ĐANG CHẠY' : '○ ĐÃ DỪNG'}}\n          </span>\n        </div>\n      </div>\n\n      <!-- 1. NÚT TOGGLE BẬT / TẮT BĂNG TẢI (LỚN, RỘNG TOÀN HÀNG ĐẦU) -->\n      <div class=\"toggle-conveyor-card\" ng-class=\"{'running': conveyorRunning, 'active': activeCard === 'toggle_conveyor'}\" ng-click=\"toggleConveyor()\">\n        <div class=\"toggle-left\">\n          <div class=\"toggle-icon-box\" ng-style=\"{'background': conveyorRunning ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)', 'border': conveyorRunning ? '1.5px solid rgba(239, 68, 68, 0.5)' : '1.5px solid rgba(16, 185, 129, 0.5)', 'color': conveyorRunning ? '#ef4444' : '#10b981'}\">\n            <svg ng-if=\"!conveyorRunning\" viewBox=\"0 0 24 24\"><path d=\"M8 5v14l11-7z\"/></svg>\n            <svg ng-if=\"conveyorRunning\" viewBox=\"0 0 24 24\"><path d=\"M6 6h12v12H6z\"/></svg>\n          </div>\n          <div>\n            <div class=\"toggle-title\">{{conveyorRunning ? 'Dừng Băng tải (TẮT)' : 'Khởi động Băng tải (BẬT)'}}</div>\n            <div class=\"toggle-desc\">{{conveyorRunning ? 'Bấm để ngắt động cơ, dừng toàn bộ hệ thống' : 'Bấm để kích hoạt động cơ băng chuyền vận hành'}}</div>\n          </div>\n        </div>\n        <div class=\"toggle-switch-badge\" ng-style=\"{'background': conveyorRunning ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)', 'color': conveyorRunning ? '#34d399' : '#f87171', 'border': conveyorRunning ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid rgba(239, 68, 68, 0.4)'}\">\n          <span class=\"dot\"></span>\n          <span>{{conveyorRunning ? 'ĐANG CHẠY - Bấm để Dừng' : 'ĐÃ DỪNG - Bấm để Bật'}}</span>\n        </div>\n      </div>\n\n      <!-- 2. LƯỚI 4 NÚT HÀNH ĐỘNG CÒN LẠI (2X2 - BẤM VÀO SÁNG VIỀN CYAN NEON NHƯ ẢNH 2) -->\n      <div class=\"action-grid-2x2\">\n        <!-- NÚT 1: THẢ KIM LOẠI -->\n        <div class=\"action-card\" ng-class=\"{'active': activeCard === 'drop_metal'}\" ng-click=\"triggerAction('drop_metal')\">\n          <div class=\"card-icon-box\" style=\"color: #f59e0b; border-color: rgba(245, 158, 11, 0.4);\">\n            <svg viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\"/></svg>\n          </div>\n          <div class=\"card-content\">\n            <div class=\"card-title\">Thả SP Kim loại</div>\n            <div class=\"card-desc\">Cảm biến nhận & Solenoid gạt</div>\n            <div class=\"status-pill pill-amber\"><span class=\"dot\"></span><span>Kích hoạt test</span></div>\n          </div>\n        </div>\n\n        <!-- NÚT 2: THẢ PHI KIM -->\n        <div class=\"action-card\" ng-class=\"{'active': activeCard === 'drop_nonmetal'}\" ng-click=\"triggerAction('drop_nonmetal')\">\n          <div class=\"card-icon-box\" style=\"color: #00d2ff; border-color: rgba(0, 210, 255, 0.4);\">\n            <svg viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z\"/></svg>\n          </div>\n          <div class=\"card-content\">\n            <div class=\"card-title\">Thả SP Phi kim</div>\n            <div class=\"card-desc\">Trôi qua băng tải vào khay B</div>\n            <div class=\"status-pill pill-blue\"><span class=\"dot\"></span><span>Kích hoạt test</span></div>\n          </div>\n        </div>\n\n        <!-- NÚT 3: KÍCH HOẠT SOLENOID -->\n        <div class=\"action-card\" ng-class=\"{'active': activeCard === 'solenoid'}\" ng-click=\"triggerAction('solenoid')\">\n          <div class=\"card-icon-box\" style=\"color: #fb923c; border-color: rgba(251, 146, 60, 0.4);\">\n            <svg viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>\n          </div>\n          <div class=\"card-content\">\n            <div class=\"card-title\">Kích hoạt Solenoid</div>\n            <div class=\"card-desc\">Thử nghiệm xi-lanh gạt 1.5s</div>\n            <div class=\"status-pill pill-amber\"><span class=\"dot\"></span><span>Thử van gạt</span></div>\n          </div>\n        </div>\n\n        <!-- NÚT 4: ĐẶT LẠI BỘ ĐẾM (RESET) -->\n        <div class=\"action-card\" ng-class=\"{'active': activeCard === 'reset'}\" ng-click=\"triggerAction('reset')\">\n          <div class=\"card-icon-box\" style=\"color: #a855f7; border-color: rgba(168, 85, 247, 0.4);\">\n            <svg viewBox=\"0 0 24 24\"><path d=\"M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z\"/></svg>\n          </div>\n          <div class=\"card-content\">\n            <div class=\"card-title\">Đặt lại Bộ đếm</div>\n            <div class=\"card-desc\">Reset số lượng sản phẩm về 0</div>\n            <div class=\"status-pill pill-purple\"><span class=\"dot\"></span><span>Reset số đếm</span></div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!-- ============================================== -->\n    <!-- CỘT PHẢI: MÔ HÌNH BĂNG CHUYỀN & GIÁM SÁT        -->\n    <!-- ============================================== -->\n    <div class=\"right-panel\">\n      <!-- Right Header -->\n      <div class=\"right-header\">\n        <span class=\"right-title\">⚡ MÔ HÌNH BĂNG TẢI & GIÁM SÁT THỜI GIAN THỰC</span>\n        <span class=\"conveyor-badge\" style=\"color: {{conveyorRunning ? '#10b981' : '#f87171'}};\">\n          {{conveyorRunning ? '● ĐANG HOẠT ĐỘNG' : '○ ĐÃ DỪNG'}}\n        </span>\n      </div>\n\n      <!-- Khung SVG Hoạt họa Băng chuyền sống động -->\n      <div class=\"conveyor-svg-box\">\n        <svg viewBox=\"0 0 380 120\" style=\"width: 100%; height: auto; display: block;\">\n          <defs>\n            <linearGradient id=\"splitMetalGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n              <stop offset=\"0%\" stop-color=\"#fef08a\"/>\n              <stop offset=\"50%\" stop-color=\"#f59e0b\"/>\n              <stop offset=\"100%\" stop-color=\"#b45309\"/>\n            </linearGradient>\n            <linearGradient id=\"splitPetGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n              <stop offset=\"0%\" stop-color=\"#93c5fd\"/>\n              <stop offset=\"50%\" stop-color=\"#3b82f6\"/>\n              <stop offset=\"100%\" stop-color=\"#1d4ed8\"/>\n            </linearGradient>\n          </defs>\n\n          <!-- Khay phân loại kim loại -->\n          <g transform=\"translate(205, 80)\">\n            <path d=\"M 0 0 L 36 0 L 30 26 L 6 26 Z\" fill=\"#1e1b4b\" stroke=\"#f59e0b\" stroke-width=\"1.5\" stroke-dasharray=\"3,2\"/>\n            <text x=\"18\" y=\"17\" fill=\"#f59e0b\" font-size=\"7\" font-weight=\"bold\" text-anchor=\"middle\" font-family=\"'Orbitron'\">KHAY [Fe]</text>\n          </g>\n          <!-- Thùng chứa phi kim -->\n          <g transform=\"translate(340, 48)\">\n            <rect x=\"0\" y=\"0\" width=\"30\" height=\"38\" fill=\"#0f2942\" stroke=\"#38bdf8\" stroke-width=\"1.5\" rx=\"3\"/>\n            <text x=\"15\" y=\"22\" fill=\"#38bdf8\" font-size=\"7\" font-weight=\"bold\" text-anchor=\"middle\" font-family=\"'Orbitron'\">KHAY B</text>\n          </g>\n\n          <!-- Cảm biến IN1 tại x=110 -->\n          <g transform=\"translate(100, 8)\">\n            <rect x=\"0\" y=\"0\" width=\"22\" height=\"24\" fill=\"#1e293b\" rx=\"3\" stroke=\"#475569\" stroke-width=\"1.5\"/>\n            <circle cx=\"11\" cy=\"7\" r=\"4\" fill=\"{{sensorActive ? '#ef4444' : '#64748b'}}\" style=\"{{sensorActive ? 'filter: drop-shadow(0 0 6px #ef4444)' : ''}}\"/>\n            <line x1=\"11\" y1=\"24\" x2=\"11\" y2=\"52\" stroke=\"{{sensorActive ? '#ef4444' : '#0284c7'}}\" stroke-dasharray=\"3,3\" stroke-width=\"{{sensorActive ? 2 : 1}}\" opacity=\"0.8\"/>\n            <text x=\"11\" y=\"-2\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"bold\" text-anchor=\"middle\" font-family=\"'Orbitron'\">IN1</text>\n          </g>\n\n          <!-- Solenoid tại x=215 -->\n          <g transform=\"translate(205, 4)\">\n            <rect x=\"0\" y=\"0\" width=\"34\" height=\"30\" fill=\"#0f172a\" stroke=\"#64748b\" stroke-width=\"2\" rx=\"4\"/>\n            <circle cx=\"6\" cy=\"8\" r=\"2.5\" fill=\"#38bdf8\"/>\n            <circle cx=\"6\" cy=\"22\" r=\"2.5\" fill=\"#f43f5e\"/>\n            <text x=\"17\" y=\"-2\" fill=\"#f59e0b\" font-size=\"8\" font-weight=\"bold\" text-anchor=\"middle\" font-family=\"'Orbitron'\">SOLENOID</text>\n            <!-- Piston gạt -->\n            <g style=\"transition: all 0.2s; transform: translateY({{solenoidActive ? 24 : 0}}px);\">\n              <line x1=\"17\" y1=\"30\" x2=\"17\" y2=\"52\" stroke=\"#cbd5e1\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n              <rect x=\"3\" y=\"52\" width=\"28\" height=\"8\" rx=\"2\" fill=\"{{solenoidActive ? '#f59e0b' : '#64748b'}}\" style=\"{{solenoidActive ? 'filter: drop-shadow(0 0 12px #f59e0b)' : ''}}\"/>\n            </g>\n          </g>\n\n          <!-- Khung băng chuyền -->\n          <g transform=\"translate(20, 52)\">\n            <!-- Con lăn trái -->\n            <g transform=\"translate(20, 20)\">\n              <circle cx=\"0\" cy=\"0\" r=\"14\" fill=\"#1e293b\" stroke=\"#64748b\" stroke-width=\"3\"/>\n              <g style=\"{{conveyorRunning ? 'animation: spinRoller 1s linear infinite; transform-origin: center;' : ''}}\">\n                <line x1=\"-10\" y1=\"0\" x2=\"10\" y2=\"0\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n                <line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"10\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n              </g>\n            </g>\n            <!-- Con lăn phải -->\n            <g transform=\"translate(305, 20)\">\n              <circle cx=\"0\" cy=\"0\" r=\"14\" fill=\"#1e293b\" stroke=\"#64748b\" stroke-width=\"3\"/>\n              <g style=\"{{conveyorRunning ? 'animation: spinRoller 1s linear infinite; transform-origin: center;' : ''}}\">\n                <line x1=\"-10\" y1=\"0\" x2=\"10\" y2=\"0\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n                <line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"10\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n              </g>\n            </g>\n            <!-- Thân băng tải -->\n            <rect x=\"20\" y=\"8\" width=\"285\" height=\"24\" fill=\"#0b1120\" stroke=\"#334155\" stroke-width=\"1.5\" rx=\"3\"/>\n            <line x1=\"20\" y1=\"6\" x2=\"305\" y2=\"6\" stroke=\"#475569\" stroke-width=\"6\"/>\n            <line x1=\"20\" y1=\"6\" x2=\"305\" y2=\"6\" stroke=\"#00d2ff\" stroke-width=\"3.5\" stroke-dasharray=\"10,8\" opacity=\"{{conveyorRunning ? 0.95 : 0.35}}\" style=\"{{conveyorRunning ? 'animation: moveBelt 0.75s linear infinite;' : ''}}\"/>\n            <line x1=\"20\" y1=\"34\" x2=\"305\" y2=\"34\" stroke=\"#475569\" stroke-width=\"4\"/>\n            <rect x=\"55\" y=\"34\" width=\"8\" height=\"22\" fill=\"#334155\"/>\n            <rect x=\"265\" y=\"34\" width=\"8\" height=\"22\" fill=\"#334155\"/>\n          </g>\n\n          <!-- Khối hộp di chuyển -->\n          <g ng-if=\"boxVisible\" ng-attr-transform=\"translate({{boxX}}, {{boxY}})\">\n            <rect x=\"-10\" y=\"-10\" width=\"20\" height=\"20\" rx=\"3\"\n                  ng-attr-fill=\"{{boxIsMetal ? 'url(#splitMetalGrad)' : 'url(#splitPetGrad)'}}\"\n                  ng-attr-stroke=\"{{boxIsMetal ? '#f59e0b' : '#38bdf8'}}\"\n                  stroke-width=\"1.5\"\n                  style=\"{{boxIsMetal ? 'filter: drop-shadow(0 0 10px #f59e0b)' : 'filter: drop-shadow(0 0 8px #38bdf8)'}}\"/>\n            <text x=\"0\" y=\"3\" fill=\"#ffffff\" font-size=\"7\" font-weight=\"bold\" text-anchor=\"middle\" font-family=\"'Orbitron'\">\n              {{boxIsMetal ? 'Fe' : 'PET'}}\n            </text>\n          </g>\n        </svg>\n      </div>\n\n      <!-- 3 KPI Boxes -->\n      <div class=\"kpi-row\">\n        <div class=\"kpi-box\">\n          <div class=\"kpi-lbl\">KIM LOẠI (GẠT)</div>\n          <div class=\"kpi-val\" style=\"color: #f59e0b;\">{{metalCount || 0}}</div>\n        </div>\n        <div class=\"kpi-box\">\n          <div class=\"kpi-lbl\">TỔNG SẢN PHẨM</div>\n          <div class=\"kpi-val\" style=\"color: #00d2ff;\">{{totalCount || 0}}</div>\n        </div>\n        <div class=\"kpi-box\">\n          <div class=\"kpi-lbl\">TỈ LỆ PHÂN LOẠI</div>\n          <div class=\"kpi-val\" style=\"color: #10b981;\">{{calcRate()}}%</div>\n        </div>\n      </div>\n\n      <!-- Mini Log & Xuất CSV -->\n      <div class=\"mini-log-box\">\n        <div class=\"mini-log-head\">\n          <span>📋 NHẬT KÝ SỰ KIỆN</span>\n          <div class=\"log-btns\">\n            <button class=\"mini-btn\" ng-click=\"downloadCsv()\">📥 Xuất CSV</button>\n            <button class=\"mini-btn\" ng-click=\"clearLog()\">🗑️ Xóa</button>\n          </div>\n        </div>\n        <div class=\"mini-log-body\">\n          <div class=\"log-row\" ng-repeat=\"item in (events || []) track by $index\">\n            <span class=\"time\">{{item.time}}</span>\n            <span class=\"tag tag-{{item.tag}}\">{{item.tag}}</span>\n            <span class=\"msg\">{{item.text}}</span>\n          </div>\n          <div ng-if=\"!events || events.length === 0\" style=\"text-align: center; color: #64748b; padding: 12px; font-size: 11px;\">\n            Chưa có sự kiện. Hãy bấm các nút bên trái để vận hành!\n          </div>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.activeCard = 'toggle_conveyor';\n  scope.connected = true;\n  scope.conveyorRunning = false;\n  scope.solenoidActive = false;\n  scope.sensorActive = false;\n  scope.metalCount = 0;\n  scope.totalCount = 0;\n  scope.events = [];\n  scope.soundOn = true;\n\n  // Box animation\n  scope.boxVisible = false;\n  scope.boxX = 40;\n  scope.boxY = 48;\n  scope.boxIsMetal = true;\n  var animInterval = null;\n  var solenoidTimer = null;\n  var audioCtx = null;\n\n  function getAudioCtx() {\n    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();\n    if (audioCtx.state === 'suspended') audioCtx.resume();\n    return audioCtx;\n  }\n  function playTone(freq, type, duration, delay) {\n    if (!scope.soundOn) return;\n    try {\n      var ctx = getAudioCtx();\n      var osc = ctx.createOscillator();\n      var gain = ctx.createGain();\n      var start = ctx.currentTime + (delay || 0);\n      osc.type = type || 'sine';\n      osc.frequency.setValueAtTime(freq, start);\n      gain.gain.setValueAtTime(0.12, start);\n      gain.gain.exponentialRampToValueAtTime(0.001, start + duration);\n      osc.connect(gain);\n      gain.connect(ctx.destination);\n      osc.start(start);\n      osc.stop(start + duration);\n    } catch(e) {}\n  }\n\n  scope.calcRate = function() {\n    if (!scope.totalCount || scope.totalCount === 0) return 0;\n    return Math.round((scope.metalCount / scope.totalCount) * 100);\n  };\n\n  // NÚT TOGGLE BẬT / TẮT BĂNG TẢI (CHỈ THAY ĐỔI ĐỘNG CƠ, KHÔNG NHẢY SỐ BỘ ĐẾM!)\n  scope.toggleConveyor = function() {\n    scope.activeCard = 'toggle_conveyor';\n    scope.conveyorRunning = !scope.conveyorRunning;\n    if (scope.conveyorRunning) {\n      playTone(550, 'sine', 0.1, 0);\n    } else {\n      playTone(350, 'sawtooth', 0.12, 0);\n    }\n    scope.send({ topic: 'conveyor_cmd', payload: [scope.conveyorRunning] });\n  };\n\n  // CÁC HÀNH ĐỘNG KHÁC (BẤM SÁNG VIỀN CYAN NEON Y HỆT ẢNH 2)\n  scope.triggerAction = function(actionId) {\n    scope.activeCard = actionId;\n\n    if (actionId === 'drop_metal') {\n      scope.conveyorRunning = true;\n      scope.runBoxAnimation(true);\n      playTone(880, 'sine', 0.12, 0);\n      scope.send({ topic: 'simulate_metal', payload: [true] });\n    }\n    else if (actionId === 'drop_nonmetal') {\n      scope.conveyorRunning = true;\n      scope.runBoxAnimation(false);\n      playTone(520, 'sine', 0.08, 0);\n      scope.send({ topic: 'non_metal', payload: 'non_metal' });\n    }\n    else if (actionId === 'solenoid') {\n      scope.triggerSolenoid();\n      scope.send({ topic: 'solenoid_on', payload: true });\n    }\n    else if (actionId === 'reset') {\n      scope.metalCount = 0;\n      scope.totalCount = 0;\n      playTone(400, 'sawtooth', 0.15, 0);\n      scope.send({ topic: 'reset', payload: 'reset' });\n    }\n  };\n\n  scope.triggerSolenoid = function() {\n    scope.solenoidActive = true;\n    playTone(880, 'sine', 0.1, 0);\n    playTone(1320, 'triangle', 0.2, 0.08);\n    if (solenoidTimer) clearTimeout(solenoidTimer);\n    solenoidTimer = setTimeout(function() {\n      scope.$apply(function() { scope.solenoidActive = false; });\n    }, 1500);\n  };\n\n  scope.runBoxAnimation = function(isMetal) {\n    if (animInterval) clearInterval(animInterval);\n    scope.boxVisible = true;\n    scope.boxIsMetal = isMetal;\n    scope.boxX = 40;\n    scope.boxY = 48;\n    \n    animInterval = setInterval(function() {\n      scope.$apply(function() {\n        scope.boxX += 4;\n        if (scope.boxX >= 100 && scope.boxX <= 120) {\n          if (scope.boxIsMetal) scope.sensorActive = true;\n        } else {\n          if (!scope.solenoidActive) scope.sensorActive = false;\n        }\n\n        if (scope.boxIsMetal && scope.boxX >= 212) {\n          scope.triggerSolenoid();\n          scope.boxY += 6;\n          if (scope.boxY >= 96) {\n            clearInterval(animInterval);\n            setTimeout(function() {\n              scope.$apply(function() { scope.boxVisible = false; });\n            }, 500);\n          }\n        } else if (!scope.boxIsMetal && scope.boxX >= 340) {\n          scope.boxY += 5;\n          if (scope.boxY >= 75) {\n            clearInterval(animInterval);\n            setTimeout(function() {\n              scope.$apply(function() { scope.boxVisible = false; });\n            }, 500);\n          }\n        }\n      });\n    }, 40);\n  };\n\n  scope.clearLog = function() {\n    scope.send({ topic: 'clear_log' });\n  };\n\n  scope.downloadCsv = function() {\n    if (!scope.events || scope.events.length === 0) {\n      alert('Chưa có dữ liệu nhật ký để xuất!');\n      return;\n    }\n    var csv = '\\uFEFFThời gian,Phân loại,Chi tiết,SP Kim loại,Tổng SP\\r\\n';\n    for (var i = 0; i < scope.events.length; i++) {\n      var ev = scope.events[i];\n      csv += '\"' + (ev.time||'') + '\",\"' + (ev.tag||'') + '\",\"' + (ev.text||'').replace(/\"/g, '\"\"') + '\",\"' + (ev.metal||0) + '\",\"' + (ev.total||0) + '\"\\r\\n';\n    }\n    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });\n    var url = URL.createObjectURL(blob);\n    var a = document.createElement('a');\n    a.href = url;\n    a.download = 'SCADA_NhatKy_' + new Date().toISOString().slice(0, 10) + '.csv';\n    document.body.appendChild(a);\n    a.click();\n    document.body.removeChild(a);\n    URL.revokeObjectURL(url);\n  };\n\n  scope.$watch('msg', function(val) {\n    if (!val) return;\n    if (val.payload) {\n      if (typeof val.payload.conveyorRunning !== 'undefined') {\n        scope.conveyorRunning = Boolean(val.payload.conveyorRunning);\n      }\n      if (typeof val.payload.metalCount !== 'undefined') {\n        scope.metalCount = val.payload.metalCount;\n      }\n      if (typeof val.payload.totalCount !== 'undefined') {\n        scope.totalCount = val.payload.totalCount;\n      }\n      if (val.payload.events) {\n        scope.events = val.payload.events;\n      }\n      if (typeof val.payload.connected !== 'undefined') {\n        scope.connected = Boolean(val.payload.connected);\n      }\n    }\n  });\n})(scope);\n</script>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
         "x": 820,
-        "y": 360,
+        "y": 320,
         "wires": [
             [
-                "a1b2c3d4e5f60003"
+                "c8314e6b21da4320",
+                "a1b2c3d4e5f60003",
+                "b1c2d3e4f5a60014",
+                "a01eb95a6d295e54"
             ]
         ]
     }
