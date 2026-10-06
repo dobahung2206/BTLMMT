@@ -41,82 +41,81 @@
         "id": "17be6ba8dcc02fd8",
         "type": "ui_base",
         "theme": {
-            "name": "theme-light",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif",
+                "edited": true
             },
             "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "default": "#0284c7",
+                "baseColor": "#0284c7",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif",
+                "edited": true
             },
             "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                "name": "SCADA Dark",
+                "default": "#38bdf8",
+                "baseColor": "#38bdf8",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif"
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
+                    "default": "#0284c7",
+                    "value": "#0284c7",
+                    "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
+                    "value": "#0f172a",
+                    "edited": true
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
+                    "value": "#0b0f19",
+                    "edited": true
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
+                    "value": "#0f172a",
+                    "edited": true
                 },
                 "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
+                    "value": "#38bdf8",
+                    "edited": true
                 },
                 "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
+                    "value": "#1e293b",
+                    "edited": true
                 },
                 "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
+                    "value": "#151e2e",
+                    "edited": true
                 },
                 "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
+                    "value": "#f8fafc",
+                    "edited": true
                 },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
+                    "value": "#1e293b",
+                    "edited": true
                 },
                 "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
+                    "value": "#334155",
+                    "edited": true
                 },
                 "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif"
                 }
             },
             "angularTheme": {
-                "primary": "indigo",
+                "primary": "cyan",
                 "accents": "blue",
                 "warn": "red",
                 "background": "grey",
-                "palette": "light"
+                "palette": "dark"
             }
         },
         "site": {
-            "name": "Node-RED Dashboard",
+            "name": "HỆ THỐNG PHÂN LOẠI SẢN PHẨM - SCADA IOT",
             "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
@@ -146,7 +145,7 @@
     {
         "id": "dee446f26611a13d",
         "type": "ui_group",
-        "name": "Nút bấm",
+        "name": "Điều khiển Băng chuyền",
         "tab": "b4889bf6eafe91c5",
         "order": 1,
         "disp": true,
@@ -163,6 +162,17 @@
         "order": 3,
         "width": 6,
         "height": 1
+    },
+    {
+        "id": "b67a1249b6d85a11",
+        "type": "ui_group",
+        "name": "Thống kê sản lượng",
+        "tab": "b4889bf6eafe91c5",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "bc97ec40ddf69903",
@@ -239,8 +249,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 420,
-        "y": 220,
+        "x": 440,
+        "y": 240,
         "wires": [
             [
                 "440cbdde9bf30775",
@@ -265,11 +275,12 @@
         "keepMsgProperties": false,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 610,
-        "y": 80,
+        "x": 630,
+        "y": 60,
         "wires": [
             [
-                "0f08c478c2b64afa"
+                "0f08c478c2b64afa",
+                "a1b2c3d4e5f60003"
             ],
             []
         ]
@@ -347,7 +358,8 @@
         "y": 80,
         "wires": [
             [
-                "52be7f48da40b346"
+                "52be7f48da40b346",
+                "a1b2c3d4e5f60003"
             ]
         ]
     },
@@ -392,8 +404,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 600,
-        "y": 220,
+        "x": 620,
+        "y": 240,
         "wires": []
     },
     {
@@ -512,13 +524,14 @@
         "icon": "",
         "payload": "[true]",
         "payloadType": "json",
-        "topic": "topic",
+        "topic": "conveyor_cmd",
         "topicType": "msg",
         "x": 650,
         "y": 380,
         "wires": [
             [
-                "a01eb95a6d295e54"
+                "a01eb95a6d295e54",
+                "a1b2c3d4e5f60003"
             ]
         ]
     },
@@ -540,13 +553,14 @@
         "icon": "",
         "payload": "[false]",
         "payloadType": "json",
-        "topic": "topic",
+        "topic": "conveyor_cmd",
         "topicType": "msg",
         "x": 650,
         "y": 460,
         "wires": [
             [
-                "a01eb95a6d295e54"
+                "a01eb95a6d295e54",
+                "a1b2c3d4e5f60003"
             ]
         ]
     },
@@ -572,17 +586,6 @@
         "wires": []
     },
     {
-        "id": "b67a1249b6d85a11",
-        "type": "ui_group",
-        "name": "Thống kê sản lượng",
-        "tab": "b4889bf6eafe91c5",
-        "order": 2,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "c8314e6b21da4320",
         "type": "function",
         "z": "8db70ae311f732e1",
@@ -594,12 +597,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
-        "y": 120,
+        "x": 350,
+        "y": 140,
         "wires": [
             [
                 "f1a923d8c1e40a12",
-                "e2b834a9d2f51b23"
+                "e2b834a9d2f51b23",
+                "a1b2c3d4e5f60003"
             ],
             [
                 "d3c945b0e3a62c34"
@@ -633,8 +637,8 @@
         "seg2": "40",
         "diff": false,
         "className": "",
-        "x": 650,
-        "y": 80,
+        "x": 640,
+        "y": 20,
         "wires": []
     },
     {
@@ -655,7 +659,7 @@
         "fontSize": 16,
         "color": "#0094ce",
         "x": 650,
-        "y": 140,
+        "y": 120,
         "wires": []
     },
     {
@@ -675,8 +679,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#333333",
-        "x": 650,
-        "y": 200,
+        "x": 630,
+        "y": 180,
         "wires": []
     },
     {
@@ -703,7 +707,8 @@
         "y": 140,
         "wires": [
             [
-                "c8314e6b21da4320"
+                "c8314e6b21da4320",
+                "a1b2c3d4e5f60003"
             ]
         ]
     },
@@ -731,7 +736,124 @@
         "y": 260,
         "wires": [
             [
-                "c8314e6b21da4320"
+                "c8314e6b21da4320",
+                "a1b2c3d4e5f60003"
+            ]
+        ]
+    },
+    {
+        "id": "a1b2c3d4e5f60001",
+        "type": "ui_group",
+        "name": "Trạng thái & Đèn tháp SCADA",
+        "tab": "b4889bf6eafe91c5",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a1b2c3d4e5f60002",
+        "type": "ui_group",
+        "name": "Nhật ký vận hành & Báo cáo",
+        "tab": "b4889bf6eafe91c5",
+        "order": 4,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a1b2c3d4e5f60003",
+        "type": "function",
+        "z": "8db70ae311f732e1",
+        "name": "Quản lý Trạng thái & Nhật ký SCADA",
+        "func": "// Quản lý Trạng thái & Nhật ký SCADA\nlet state = flow.get('scada_state') || 'STOPPED';\nlet statusText = flow.get('scada_statusText') || 'Hệ thống đang dừng';\nlet conveyorRunning = flow.get('conveyorRunning') || false;\nlet metalCount = flow.get('metalCount') || 0;\nlet totalCount = flow.get('totalCount') || 0;\nlet eventLog = flow.get('eventLog') || [];\n\nlet now = new Date();\nlet timeStr = now.toTimeString().split(' ')[0];\nlet soundTrigger = null;\n\nfunction addEvent(tag, tagType, text) {\n    eventLog.unshift({\n        time: timeStr,\n        tag: tag,\n        tagType: tagType,\n        text: text,\n        metal: flow.get('metalCount') || metalCount,\n        total: flow.get('totalCount') || totalCount\n    });\n    if (eventLog.length > 50) eventLog.pop();\n    flow.set('eventLog', eventLog);\n}\n\n// 1. Điều khiển Băng chuyền\nif (msg.topic === 'conveyor_cmd') {\n    let run = false;\n    if (Array.isArray(msg.payload)) run = Boolean(msg.payload[0]);\n    else run = Boolean(msg.payload);\n\n    if (run) {\n        conveyorRunning = true;\n        state = 'RUNNING';\n        statusText = 'Băng chuyền đang hoạt động';\n        soundTrigger = 'beep';\n        addEvent('START', 'success', 'Khởi động băng chuyền vận hành');\n    } else {\n        conveyorRunning = false;\n        state = 'STOPPED';\n        statusText = 'Băng chuyền đã dừng';\n        soundTrigger = 'beep';\n        addEvent('STOP', 'danger', 'Dừng băng chuyền an toàn');\n    }\n}\n\n// 2. Solenoid kích hoạt (Bật Solenoid qua node 440cbdde9bf30775)\nelse if (msg.topic === 'solenoid_on' || (msg.payload && msg.payload[0] === true && msg.adr === 1)) {\n    state = 'SORTING';\n    statusText = 'Đang kích hoạt van Solenoid gạt kim loại';\n    soundTrigger = 'chime';\n    addEvent('GẠT SP', 'warning', 'Kích hoạt Solenoid phân loại sản phẩm kim loại');\n}\n\n// 3. Solenoid thu hồi (node 9104baf60cd4e3aa đặt payload = false)\nelse if (msg.topic === 'solenoid_off' || msg.payload === false) {\n    state = conveyorRunning ? 'RUNNING' : 'STOPPED';\n    statusText = conveyorRunning ? 'Băng chuyền đang hoạt động' : 'Băng chuyền đã dừng';\n    addEvent('THU HỒI', 'info', 'Thu hồi xi-lanh Solenoid về vị trí chờ');\n}\n\n// 4. Sự kiện đếm Kim loại\nelse if (msg.topic === 'metal') {\n    metalCount = msg.payload;\n    if (metalCount > 0) {\n        state = 'SORTING';\n        statusText = 'Phát hiện sản phẩm kim loại #' + metalCount;\n        soundTrigger = 'chime';\n        addEvent('KIM LOẠI', 'warning', 'Cảm biến IN1 phát hiện SP kim loại #' + metalCount);\n    }\n}\n\n// 5. Sự kiện bấm Thêm SP Phi kim\nelse if (msg.topic === 'non_metal') {\n    totalCount = flow.get('totalCount') || 0;\n    soundTrigger = 'beep';\n    addEvent('PHI KIM', 'primary', 'Ghi nhận SP phi kim qua băng chuyền');\n}\n\n// 6. Sự kiện Reset\nelse if (msg.topic === 'reset') {\n    metalCount = 0;\n    totalCount = 0;\n    soundTrigger = 'beep';\n    addEvent('RESET', 'danger', 'Đã đặt lại toàn bộ bộ đếm sản phẩm về 0');\n}\n\n// 7. Lệnh xóa nhật ký từ UI\nelse if (msg.topic === 'clear_log') {\n    eventLog = [];\n    flow.set('eventLog', eventLog);\n    addEvent('DỌN DẸP', 'info', 'Đã xóa toàn bộ nhật ký vận hành');\n}\n\n// Lưu trạng thái\nflow.set('scada_state', state);\nflow.set('scada_statusText', statusText);\nflow.set('conveyorRunning', conveyorRunning);\n\nmsg.payload = {\n    state: state,\n    statusText: statusText,\n    conveyorRunning: conveyorRunning,\n    metalCount: flow.get('metalCount') || 0,\n    totalCount: flow.get('totalCount') || 0,\n    events: eventLog,\n    soundTrigger: soundTrigger,\n    time: timeStr\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 320,
+        "wires": [
+            [
+                "a1b2c3d4e5f60004",
+                "a1b2c3d4e5f60005"
+            ]
+        ]
+    },
+    {
+        "id": "a1b2c3d4e5f60006",
+        "type": "inject",
+        "z": "8db70ae311f732e1",
+        "name": "Khởi tạo SCADA",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.5,
+        "topic": "init",
+        "payload": "init",
+        "payloadType": "str",
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "a1b2c3d4e5f60003"
+            ]
+        ]
+    },
+    {
+        "id": "a1b2c3d4e5f60004",
+        "type": "ui_template",
+        "z": "8db70ae311f732e1",
+        "group": "a1b2c3d4e5f60001",
+        "name": "Đèn tháp Andon & Âm thanh",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "format": "\n<style>\n  /* Global SCADA Dark Improvements */\n  .scada-andon-box {\n    padding: 10px;\n    background: #111827;\n    border-radius: 12px;\n    border: 1px solid #1f2937;\n    box-shadow: 0 4px 15px rgba(0,0,0,0.4);\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n  }\n  .tower-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 16px;\n    margin: 15px 0;\n  }\n  .tower-stack {\n    display: flex;\n    flex-direction: column;\n    background: #030712;\n    padding: 8px 12px;\n    border-radius: 24px;\n    border: 2px solid #374151;\n    box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);\n    gap: 8px;\n    align-items: center;\n  }\n  .light-lamp {\n    width: 38px;\n    height: 38px;\n    border-radius: 50%;\n    transition: all 0.25s ease;\n    border: 2px solid rgba(255,255,255,0.1);\n  }\n  /* RED LAMP */\n  .lamp-red {\n    background: #450a0a;\n    opacity: 0.3;\n  }\n  .lamp-red.active {\n    background: #ef4444;\n    opacity: 1;\n    box-shadow: 0 0 22px #ef4444, inset 0 0 8px #ffffff;\n  }\n  /* YELLOW LAMP */\n  .lamp-yellow {\n    background: #422006;\n    opacity: 0.3;\n  }\n  .lamp-yellow.active {\n    background: #eab308;\n    opacity: 1;\n    box-shadow: 0 0 28px #eab308, inset 0 0 8px #ffffff;\n    animation: lampBlink 0.5s infinite alternate;\n  }\n  /* GREEN LAMP */\n  .lamp-green {\n    background: #052e16;\n    opacity: 0.3;\n  }\n  .lamp-green.active {\n    background: #22c55e;\n    opacity: 1;\n    box-shadow: 0 0 22px #22c55e, inset 0 0 8px #ffffff;\n  }\n  @keyframes lampBlink {\n    from { opacity: 0.6; filter: brightness(0.8); }\n    to { opacity: 1; filter: brightness(1.4); }\n  }\n  .status-badge {\n    text-align: center;\n    padding: 8px 14px;\n    border-radius: 8px;\n    font-weight: 700;\n    font-size: 14px;\n    letter-spacing: 0.5px;\n    margin-bottom: 8px;\n    transition: all 0.3s ease;\n  }\n  .status-stopped {\n    background: rgba(239, 68, 68, 0.15);\n    color: #fca5a5;\n    border: 1px solid #ef4444;\n  }\n  .status-running {\n    background: rgba(34, 197, 94, 0.15);\n    color: #86efac;\n    border: 1px solid #22c55e;\n  }\n  .status-sorting {\n    background: rgba(234, 179, 8, 0.2);\n    color: #fef08a;\n    border: 1px solid #eab308;\n    animation: statusPulse 0.8s infinite alternate;\n  }\n  @keyframes statusPulse {\n    from { box-shadow: 0 0 5px rgba(234,179,8,0.3); }\n    to { box-shadow: 0 0 15px rgba(234,179,8,0.7); }\n  }\n  .sound-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: #1f2937;\n    padding: 6px 12px;\n    border-radius: 6px;\n    font-size: 12px;\n    color: #9ca3af;\n  }\n  .sound-btn {\n    background: #374151;\n    color: #e5e7eb;\n    border: none;\n    padding: 3px 8px;\n    border-radius: 4px;\n    cursor: pointer;\n    font-size: 11px;\n  }\n  .sound-btn:hover {\n    background: #4b5563;\n  }\n</style>\n\n<div class=\"scada-andon-box\">\n  <div class=\"status-badge\" ng-class=\"{\n    'status-stopped': (!msg.payload || msg.payload.state === 'STOPPED'),\n    'status-running': (msg.payload && msg.payload.state === 'RUNNING'),\n    'status-sorting': (msg.payload && msg.payload.state === 'SORTING')\n  }\">\n    <span ng-if=\"!msg.payload || msg.payload.state === 'STOPPED'\">🔴 HỆ THỐNG: ĐANG DỪNG</span>\n    <span ng-if=\"msg.payload && msg.payload.state === 'RUNNING'\">🟢 HỆ THỐNG: ĐANG HOẠT ĐỘNG</span>\n    <span ng-if=\"msg.payload && msg.payload.state === 'SORTING'\">⚡ ĐANG PHÂN LOẠI KIM LOẠI</span>\n  </div>\n\n  <div class=\"tower-container\">\n    <div class=\"tower-stack\">\n      <div class=\"light-lamp lamp-red\" ng-class=\"{'active': (!msg.payload || msg.payload.state === 'STOPPED')}\" title=\"Đèn Đỏ: Dừng\"></div>\n      <div class=\"light-lamp lamp-yellow\" ng-class=\"{'active': (msg.payload && msg.payload.state === 'SORTING')}\" title=\"Đèn Vàng: Phân loại / Solenoid\"></div>\n      <div class=\"light-lamp lamp-green\" ng-class=\"{'active': (msg.payload && msg.payload.state === 'RUNNING')}\" title=\"Đèn Xanh: Hoạt động bình thường\"></div>\n    </div>\n    <div style=\"font-size: 12px; color: #9ca3af; line-height: 1.6;\">\n      <div><b style=\"color: #ef4444;\">Đỏ:</b> Băng chuyền dừng</div>\n      <div><b style=\"color: #eab308;\">Vàng:</b> Đang gạt Solenoid</div>\n      <div><b style=\"color: #22c55e;\">Xanh:</b> Vận hành bình thường</div>\n    </div>\n  </div>\n\n  <div class=\"sound-bar\">\n    <span>🔊 Âm thanh cảnh báo: <b ng-style=\"{'color': soundOn ? '#4ade80' : '#f87171'}\">{{soundOn ? 'BẬT' : 'TẮT'}}</b></span>\n    <div>\n      <button class=\"sound-btn\" ng-click=\"toggleSound()\">{{soundOn ? 'Tắt âm' : 'Bật âm'}}</button>\n      <button class=\"sound-btn\" ng-click=\"testChime()\" style=\"margin-left: 4px;\">Thử chuông</button>\n    </div>\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.soundOn = true;\n  var audioCtx = null;\n\n  function getAudioContext() {\n    if (!audioCtx) {\n      audioCtx = new (window.AudioContext || window.webkitAudioContext)();\n    }\n    if (audioCtx.state === 'suspended') {\n      audioCtx.resume();\n    }\n    return audioCtx;\n  }\n\n  function playTone(freq, type, duration, delay) {\n    if (!scope.soundOn) return;\n    try {\n      var ctx = getAudioContext();\n      var osc = ctx.createOscillator();\n      var gain = ctx.createGain();\n      var start = ctx.currentTime + (delay || 0);\n      osc.type = type || 'sine';\n      osc.frequency.setValueAtTime(freq, start);\n      gain.gain.setValueAtTime(0.12, start);\n      gain.gain.exponentialRampToValueAtTime(0.001, start + duration);\n      osc.connect(gain);\n      gain.connect(ctx.destination);\n      osc.start(start);\n      osc.stop(start + duration);\n    } catch(e) {}\n  }\n\n  scope.toggleSound = function() {\n    scope.soundOn = !scope.soundOn;\n  };\n\n  scope.testChime = function() {\n    playTone(880, 'sine', 0.12, 0);\n    playTone(1320, 'triangle', 0.22, 0.1);\n  };\n\n  scope.$watch('msg', function(val) {\n    if (val && val.payload && val.payload.soundTrigger) {\n      if (val.payload.soundTrigger === 'chime') {\n        playTone(880, 'sine', 0.12, 0);\n        playTone(1320, 'triangle', 0.22, 0.1);\n      } else if (val.payload.soundTrigger === 'beep') {\n        playTone(550, 'sine', 0.08, 0);\n      }\n    }\n  });\n})(scope);\n</script>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 820,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1b2c3d4e5f60005",
+        "type": "ui_template",
+        "z": "8db70ae311f732e1",
+        "group": "a1b2c3d4e5f60002",
+        "name": "Bảng Nhật ký & Xuất CSV",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "format": "\n<style>\n  .scada-log-box {\n    padding: 10px;\n    background: #111827;\n    border-radius: 12px;\n    border: 1px solid #1f2937;\n    box-shadow: 0 4px 15px rgba(0,0,0,0.4);\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n  }\n  .log-table-container {\n    height: 195px;\n    overflow-y: auto;\n    background: #090d16;\n    border-radius: 8px;\n    border: 1px solid #1f2937;\n    margin: 8px 0;\n    padding: 4px 6px;\n  }\n  /* Custom sleek scrollbar */\n  .log-table-container::-webkit-scrollbar {\n    width: 6px;\n  }\n  .log-table-container::-webkit-scrollbar-track {\n    background: #0b0f19;\n  }\n  .log-table-container::-webkit-scrollbar-thumb {\n    background: #374151;\n    border-radius: 3px;\n  }\n  .log-entry {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    padding: 5px 6px;\n    border-bottom: 1px solid #1a2234;\n    font-size: 12px;\n    animation: fadeIn 0.3s ease;\n  }\n  @keyframes fadeIn {\n    from { opacity: 0; transform: translateY(-4px); }\n    to { opacity: 1; transform: translateY(0); }\n  }\n  .log-time {\n    color: #94a3b8;\n    font-family: monospace;\n    font-size: 11px;\n    min-width: 55px;\n  }\n  .log-tag {\n    padding: 2px 6px;\n    border-radius: 4px;\n    font-size: 10px;\n    font-weight: 700;\n    text-transform: uppercase;\n    min-width: 50px;\n    text-align: center;\n  }\n  .tag-success { background: #065f46; color: #a7f3d0; }\n  .tag-danger  { background: #881337; color: #fecdd3; }\n  .tag-warning { background: #78350f; color: #fde68a; }\n  .tag-primary { background: #1e3a8a; color: #bfdbfe; }\n  .tag-info    { background: #155e75; color: #a5f3fc; }\n  .log-text {\n    color: #e2e8f0;\n    flex: 1;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n  .log-actions {\n    display: flex;\n    gap: 8px;\n    margin-top: 6px;\n  }\n  .btn-csv {\n    flex: 1;\n    background: linear-gradient(135deg, #0284c7, #0369a1);\n    color: white;\n    border: none;\n    padding: 7px 12px;\n    border-radius: 6px;\n    font-weight: 600;\n    font-size: 12px;\n    cursor: pointer;\n    transition: all 0.2s;\n  }\n  .btn-csv:hover {\n    background: linear-gradient(135deg, #0369a1, #075985);\n    box-shadow: 0 0 10px rgba(2,132,199,0.5);\n  }\n  .btn-clear {\n    background: #374151;\n    color: #d1d5db;\n    border: none;\n    padding: 7px 12px;\n    border-radius: 6px;\n    font-size: 12px;\n    cursor: pointer;\n  }\n  .btn-clear:hover {\n    background: #4b5563;\n  }\n  .empty-log {\n    text-align: center;\n    color: #64748b;\n    padding: 30px 10px;\n    font-size: 12px;\n  }\n</style>\n\n<div class=\"scada-log-box\">\n  <div style=\"display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; color: #38bdf8;\">\n    <span>📋 Nhật ký sự kiện thời gian thực</span>\n    <span style=\"font-size: 11px; color: #64748b;\">{{(msg.payload.events || []).length}} mục</span>\n  </div>\n\n  <div class=\"log-table-container\">\n    <div ng-if=\"!msg.payload.events || msg.payload.events.length === 0\" class=\"empty-log\">\n      Chưa có sự kiện nào. Hãy vận hành băng chuyền để ghi nhật ký!\n    </div>\n    <div class=\"log-entry\" ng-repeat=\"item in (msg.payload.events || []) track by $index\">\n      <span class=\"log-time\">{{item.time}}</span>\n      <span class=\"log-tag tag-{{item.tagType || 'info'}}\">{{item.tag}}</span>\n      <span class=\"log-text\" title=\"{{item.text}}\">{{item.text}}</span>\n    </div>\n  </div>\n\n  <div class=\"log-actions\">\n    <button class=\"btn-csv\" ng-click=\"downloadCSV()\">\n      📥 Xuất báo cáo (CSV / Excel)\n    </button>\n    <button class=\"btn-clear\" ng-click=\"clearLog()\" title=\"Xóa toàn bộ lịch sử\">\n      🗑️ Xóa log\n    </button>\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.downloadCSV = function() {\n    var events = (scope.msg && scope.msg.payload && scope.msg.payload.events) || [];\n    if (events.length === 0) {\n      alert('Chưa có dữ liệu nhật ký để xuất!');\n      return;\n    }\n    // Add UTF-8 BOM so Vietnamese displays correctly in Excel\n    var csvContent = '\\uFEFFThời gian,Phân loại,Nội dung chi tiết,SP Kim loại,Tổng sản phẩm\\r\\n';\n    for (var i = 0; i < events.length; i++) {\n      var e = events[i];\n      csvContent += '\"' + (e.time || '') + '\",\"' + \n                    (e.tag || '') + '\",\"' + \n                    (e.text || '').replace(/\"/g, '\"\"') + '\",\"' + \n                    (e.metal || 0) + '\",\"' + \n                    (e.total || 0) + '\"\\r\\n';\n    }\n    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });\n    var url = URL.createObjectURL(blob);\n    var a = document.createElement('a');\n    a.href = url;\n    var nowStr = new Date().toISOString().slice(0, 10);\n    a.download = 'BTLMMT_NhatKy_SanXuat_' + nowStr + '.csv';\n    document.body.appendChild(a);\n    a.click();\n    document.body.removeChild(a);\n    URL.revokeObjectURL(url);\n  };\n\n  scope.clearLog = function() {\n    scope.send({ topic: 'clear_log' });\n  };\n})(scope);\n</script>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 820,
+        "y": 360,
+        "wires": [
+            [
+                "a1b2c3d4e5f60003"
             ]
         ]
     }
