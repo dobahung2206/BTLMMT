@@ -1,5 +1,500 @@
 [
     {
+        "id": "8db70ae311f732e1",
+        "type": "tab",
+        "label": "Băng chuyền phân loại sản phẩm",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "40dda6f6738363f0",
+        "type": "modbus-client",
+        "name": "",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "17be6ba8dcc02fd8",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "b4889bf6eafe91c5",
+        "type": "ui_tab",
+        "name": "Bảng điều khiển",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "dee446f26611a13d",
+        "type": "ui_group",
+        "name": "Nút bấm",
+        "tab": "b4889bf6eafe91c5",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e6dff874e861072e",
+        "type": "ui_spacer",
+        "z": "8db70ae311f732e1",
+        "name": "spacer",
+        "group": "dee446f26611a13d",
+        "order": 3,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "bc97ec40ddf69903",
+        "type": "modbus-read",
+        "z": "8db70ae311f732e1",
+        "name": "Đọc cảm biến IN1",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "",
+        "dataType": "Input",
+        "adr": "0",
+        "quantity": "1",
+        "rate": "100",
+        "rateUnit": "ms",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "40dda6f6738363f0",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 90,
+        "y": 80,
+        "wires": [
+            [
+                "c8314e6b21da4320"
+            ],
+            [
+                "3df89b7a93e9c749"
+            ]
+        ]
+    },
+    {
+        "id": "7629cdaeaa2d0e5b",
+        "type": "switch",
+        "z": "8db70ae311f732e1",
+        "name": "Phát hiện kim loại",
+        "property": "payload[0]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "667bdb838ac3ae9d"
+            ]
+        ]
+    },
+    {
+        "id": "667bdb838ac3ae9d",
+        "type": "delay",
+        "z": "8db70ae311f732e1",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 420,
+        "y": 220,
+        "wires": [
+            [
+                "440cbdde9bf30775",
+                "bd13efc4aaaa4c58"
+            ]
+        ]
+    },
+    {
+        "id": "440cbdde9bf30775",
+        "type": "modbus-write",
+        "z": "8db70ae311f732e1",
+        "name": "Bật Solenoid",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "1",
+        "quantity": "1",
+        "server": "40dda6f6738363f0",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 610,
+        "y": 80,
+        "wires": [
+            [
+                "0f08c478c2b64afa"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "52be7f48da40b346",
+        "type": "modbus-write",
+        "z": "8db70ae311f732e1",
+        "name": "Tắt solenoid",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "1",
+        "quantity": "1",
+        "server": "40dda6f6738363f0",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 1090,
+        "y": 80,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "0f08c478c2b64afa",
+        "type": "delay",
+        "z": "8db70ae311f732e1",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 780,
+        "y": 220,
+        "wires": [
+            [
+                "9104baf60cd4e3aa",
+                "1f4563de86f8c850"
+            ]
+        ]
+    },
+    {
+        "id": "9104baf60cd4e3aa",
+        "type": "change",
+        "z": "8db70ae311f732e1",
+        "name": "Đổi sang tắt Solenoid",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 80,
+        "wires": [
+            [
+                "52be7f48da40b346"
+            ]
+        ]
+    },
+    {
+        "id": "16c87cf2121b8f80",
+        "type": "inject",
+        "z": "8db70ae311f732e1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[true]",
+        "payloadType": "json",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "c8314e6b21da4320"
+            ]
+        ]
+    },
+    {
+        "id": "bd13efc4aaaa4c58",
+        "type": "debug",
+        "z": "8db70ae311f732e1",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1f4563de86f8c850",
+        "type": "debug",
+        "z": "8db70ae311f732e1",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0afb6ddda5ff8966",
+        "type": "inject",
+        "z": "8db70ae311f732e1",
+        "name": "Mở băng chuyền",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[true]",
+        "payloadType": "json",
+        "x": 180,
+        "y": 380,
+        "wires": [
+            [
+                "a01eb95a6d295e54"
+            ]
+        ]
+    },
+    {
+        "id": "f8e387c8b6016dc9",
+        "type": "inject",
+        "z": "8db70ae311f732e1",
+        "name": "Tắt băng chuyền",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[false]",
+        "payloadType": "json",
+        "x": 180,
+        "y": 500,
+        "wires": [
+            [
+                "a01eb95a6d295e54"
+            ]
+        ]
+    },
+    {
+        "id": "a01eb95a6d295e54",
+        "type": "modbus-write",
+        "z": "8db70ae311f732e1",
+        "name": "Chạy băng chuyền",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "",
+        "dataType": "Coil",
+        "adr": "0",
+        "quantity": "1",
+        "server": "40dda6f6738363f0",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 450,
+        "y": 440,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
         "id": "9cbc96608dac920d",
         "type": "ui_button",
         "z": "8db70ae311f732e1",
@@ -22,35 +517,222 @@
         "x": 650,
         "y": 380,
         "wires": [
-            []
+            [
+                "a01eb95a6d295e54"
+            ]
         ]
     },
     {
-        "id": "dee446f26611a13d",
+        "id": "7cd56f5c0a728784",
+        "type": "ui_button",
+        "z": "8db70ae311f732e1",
+        "name": "",
+        "group": "dee446f26611a13d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Tắt",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "[false]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 650,
+        "y": 460,
+        "wires": [
+            [
+                "a01eb95a6d295e54"
+            ]
+        ]
+    },
+    {
+        "id": "3df89b7a93e9c749",
+        "type": "ui_text",
+        "z": "8db70ae311f732e1",
+        "group": "dee446f26611a13d",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Hiển thị",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 300,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b67a1249b6d85a11",
         "type": "ui_group",
-        "name": "Nút bấm",
+        "name": "Thống kê sản lượng",
         "tab": "b4889bf6eafe91c5",
-        "order": 1,
+        "order": 2,
         "disp": true,
         "width": 6,
         "collapse": false,
         "className": ""
     },
     {
-        "id": "b4889bf6eafe91c5",
-        "type": "ui_tab",
-        "name": "Bảng điều khiển",
-        "icon": "dashboard",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
+        "id": "c8314e6b21da4320",
+        "type": "function",
+        "z": "8db70ae311f732e1",
+        "name": "Bộ đếm & Lọc sườn lên",
+        "func": "// Khởi tạo các biến nếu chưa có\nlet metalCount = flow.get('metalCount') || 0;\nlet totalCount = flow.get('totalCount') || 0;\nlet lastState = context.get('lastState') || false;\n\n// 1. Xử lý nút Reset\nif (msg.topic === \"reset\" || msg.payload === \"reset\") {\n    metalCount = 0;\n    totalCount = 0;\n    flow.set('metalCount', 0);\n    flow.set('totalCount', 0);\n    context.set('lastState', false);\n    return [\n        { payload: 0, topic: \"metal\" },     // Out 1: SP Kim loại\n        { payload: 0, topic: \"total\" },     // Out 2: Tổng sản phẩm\n        null                                // Out 3: Kích hoạt Solenoid\n    ];\n}\n\n// 2. Xử lý nút Giả lập SP Phi kim (Demo)\nif (msg.topic === \"non_metal\" || msg.payload === \"non_metal\") {\n    totalCount += 1;\n    flow.set('totalCount', totalCount);\n    return [\n        null,\n        { payload: totalCount, topic: \"total\" },\n        null\n    ];\n}\n\n// 3. Xử lý tín hiệu cảm biến IN1 hoặc nút test kim loại\nlet isMetal = false;\nif (Array.isArray(msg.payload)) {\n    isMetal = Boolean(msg.payload[0]);\n} else if (typeof msg.payload === \"boolean\") {\n    isMetal = msg.payload;\n}\n\n// Phát hiện sườn lên (Rising Edge: false -> true)\nif (isMetal && !lastState) {\n    context.set('lastState', true);\n    metalCount += 1;\n    totalCount += 1;\n    flow.set('metalCount', metalCount);\n    flow.set('totalCount', totalCount);\n    \n    return [\n        { payload: metalCount, topic: \"metal\" },   // Out 1: SP Kim loại\n        { payload: totalCount, topic: \"total\" },   // Out 2: Tổng sản phẩm\n        { payload: [true], topic: \"trigger\" }      // Out 3: Kích hoạt Solenoid\n    ];\n} else if (!isMetal) {\n    context.set('lastState', false);\n}\n\nreturn null;",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "f1a923d8c1e40a12",
+                "e2b834a9d2f51b23"
+            ],
+            [
+                "d3c945b0e3a62c34"
+            ],
+            [
+                "667bdb838ac3ae9d"
+            ]
+        ]
     },
     {
-        "id": "9ff794f514280140",
-        "type": "global-config",
-        "env": [],
-        "modules": {
-            "node-red-dashboard": "3.6.6"
-        }
+        "id": "f1a923d8c1e40a12",
+        "type": "ui_gauge",
+        "z": "8db70ae311f732e1",
+        "name": "Đồng hồ sản lượng kim loại",
+        "group": "b67a1249b6d85a11",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Sản lượng Kim loại",
+        "label": "chiếc",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 50,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "20",
+        "seg2": "40",
+        "diff": false,
+        "className": "",
+        "x": 650,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e2b834a9d2f51b23",
+        "type": "ui_text",
+        "z": "8db70ae311f732e1",
+        "group": "b67a1249b6d85a11",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "SP Kim loại",
+        "label": "SP Kim loại (đã phân loại):",
+        "format": "{{msg.payload}} chiếc",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#0094ce",
+        "x": 650,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d3c945b0e3a62c34",
+        "type": "ui_text",
+        "z": "8db70ae311f732e1",
+        "group": "b67a1249b6d85a11",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "name": "Tổng số SP",
+        "label": "Tổng sản phẩm:",
+        "format": "{{msg.payload}} chiếc",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#333333",
+        "x": 650,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a4d056c1f4b73d45",
+        "type": "ui_button",
+        "z": "8db70ae311f732e1",
+        "name": "Đặt lại bộ đếm",
+        "group": "b67a1249b6d85a11",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Đặt lại bộ đếm (Reset)",
+        "tooltip": "Xóa số đếm về 0",
+        "color": "#ffffff",
+        "bgcolor": "#d9534f",
+        "className": "",
+        "icon": "fa-refresh",
+        "payload": "reset",
+        "payloadType": "str",
+        "topic": "reset",
+        "topicType": "str",
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "c8314e6b21da4320"
+            ]
+        ]
+    },
+    {
+        "id": "95e167d2a5c84e56",
+        "type": "ui_button",
+        "z": "8db70ae311f732e1",
+        "name": "Thêm SP Phi kim",
+        "group": "dee446f26611a13d",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Đếm SP Phi kim (Demo)",
+        "tooltip": "Giả lập sản phẩm không phải kim loại",
+        "color": "#ffffff",
+        "bgcolor": "#337ab7",
+        "className": "",
+        "icon": "fa-plus",
+        "payload": "non_metal",
+        "payloadType": "str",
+        "topic": "non_metal",
+        "topicType": "str",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "c8314e6b21da4320"
+            ]
+        ]
     }
 ]
