@@ -116,18 +116,24 @@ Trong giao diện quản lý Palette của Node-RED (`Manage palette`), cài đ�
 * `node-red-contrib-modbus`
 * `node-red-dashboard`
 
-### 3. Khởi chạy & Vận hành
-1. Mở trình duyệt và truy cập vào trang lập trình: `http://localhost:1880`.
-2. Chọn **Menu (góc trên bên phải) -> Import**, chọn file [`flows.json`](flows.json) trong thư mục dự án này.
-3. Nhấp đúp vào node cấu hình **`Modbus-Client`**:
-   * Kiểm tra và chỉnh sửa cổng Serial Port (`COMx` trên Windows hoặc `/dev/ttyUSBx` trên Linux) cho khớp với cáp USB-RS485 nhận diện trong *Device Manager*.
-   * Tốc độ Baudrate mặc định: `9600`, Data bits: `8`, Stop bits: `1`, Parity: `None`.
-4. Nhấn nút **Deploy** màu đỏ ở góc trên bên phải.
-5. Truy cập giao diện điều khiển SCADA tại:
-   👉 **`http://localhost:1880/ui`**
+### 3. Hướng dẫn Khởi chạy Mô phỏng Ảo (Virtual Modbus Simulation)
+Khi không có hoặc chưa cắm phần cứng vật lý thật, hệ thống hỗ trợ mô phỏng toàn diện qua cặp cổng COM ảo `com0com` (`CNCA0` $\leftrightarrow$ `CNCB0`):
+
+1. **Khởi chạy Virtual Slave:**
+   * Cách 1: Nhấp đúp vào file [`Chay_Mo_Phong_BTLMMT.bat`](Chay_Mo_Phong_BTLMMT.bat) trên màn hình Desktop (hoặc trong thư mục dự án).
+   * Cách 2: Mở Terminal chạy lệnh: `node virtual_slave.js`.
+2. **Cửa sổ dòng lệnh Slave hỗ trợ tương tác phím trực tiếp:**
+   * `[M]`: Thả ngay 1 phôi Kim loại (Kích hoạt đồng thời cảm biến từ IN1 và cảm biến quang IN2).
+   * `[P]`: Thả ngay 1 phôi Phi kim (Chỉ kích hoạt cảm biến quang IN2).
+   * `[SPACE]`: Bật / Tắt chế độ tự động sinh phôi ngẫu nhiên ($6.5\text{s}$/phôi).
+   * `[D]`: Giả lập sự cố đứt cáp RS485 (Web SCADA sẽ phát còi hú và ghi nhận cảnh báo Timeout $5\text{s}$).
+   * `[C]`: Khôi phục lại kết nối truyền thông Modbus (SCADA tự động phục hồi ONLINE).
+   * `[Q]`: Thoát chương trình giả lập.
+3. **Mở Web SCADA:** Truy cập `http://localhost:1880/ui` (tài khoản `hung` / `1`) để theo dõi chuyển động đồ họa băng chuyền, số liệu thống kê chu kỳ $\text{Mean}, \text{Median}, \sigma$ và nhật ký phân loại thời gian thực!
 
 ---
 
 ## 🎯 Kết luận
 
 Dự án đã mô phỏng thành công một mô hình hệ thống sản xuất công nghiệp thực tế. Bằng việc kết hợp giao thức truyền thông **Modbus RTU** ổn định, tin cậy cùng sự linh hoạt, trực quan của nền tảng **Node-RED**, hệ thống không chỉ thực hiện chuẩn xác nghiệp vụ phân loại vật lý mà còn cung cấp khả năng giám sát và thu thập dữ liệu (**Data Acquisition - SCADA**) mạnh mẽ, đáp ứng các tiêu chuẩn cốt lõi trong kỷ nguyên **Công nghiệp 4.0**.
+
