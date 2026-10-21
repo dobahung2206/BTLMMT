@@ -116,20 +116,20 @@ Trong giao diện quản lý Palette của Node-RED (`Manage palette`), cài đ�
 * `node-red-contrib-modbus`
 * `node-red-dashboard`
 
-### 3. Hướng dẫn Khởi chạy Mô phỏng Ảo (Virtual Modbus Simulation)
-Khi không có hoặc chưa cắm phần cứng vật lý thật, hệ thống hỗ trợ mô phỏng toàn diện qua cặp cổng COM ảo `com0com` (`CNCA0` $\leftrightarrow$ `CNCB0`):
+### 3. Hướng dẫn Vận hành Trực tiếp & Truy cập Online từ xa
 
-1. **Khởi chạy Virtual Slave:**
-   * Cách 1: Nhấp đúp vào file [`Chay_Mo_Phong_BTLMMT.bat`](Chay_Mo_Phong_BTLMMT.bat) trên màn hình Desktop (hoặc trong thư mục dự án).
-   * Cách 2: Mở Terminal chạy lệnh: `node virtual_slave.js`.
-2. **Cửa sổ dòng lệnh Slave hỗ trợ tương tác phím trực tiếp:**
-   * `[M]`: Thả ngay 1 phôi Kim loại (Kích hoạt đồng thời cảm biến từ IN1 và cảm biến quang IN2).
-   * `[P]`: Thả ngay 1 phôi Phi kim (Chỉ kích hoạt cảm biến quang IN2).
-   * `[SPACE]`: Bật / Tắt chế độ tự động sinh phôi ngẫu nhiên ($6.5\text{s}$/phôi).
-   * `[D]`: Giả lập sự cố đứt cáp RS485 (Web SCADA sẽ phát còi hú và ghi nhận cảnh báo Timeout $5\text{s}$).
-   * `[C]`: Khôi phục lại kết nối truyền thông Modbus (SCADA tự động phục hồi ONLINE).
-   * `[Q]`: Thoát chương trình giả lập.
-3. **Mở Web SCADA:** Truy cập `http://localhost:1880/ui` (tài khoản `hung` / `1`) để theo dõi chuyển động đồ họa băng chuyền, số liệu thống kê chu kỳ $\text{Mean}, \text{Median}, \sigma$ và nhật ký phân loại thời gian thực!
+1. **Khởi động Node-RED:**
+   - Mở Terminal chạy lệnh: 
+ode-red
+   - Node-RED sẽ tự động kết nối cổng phần cứng COM4 với thông số 9600-8-N-1, Slave ID 255.
+
+2. **Truy cập Giao diện Web SCADA Cục bộ:**
+   - Mở trình duyệt truy cập: http://localhost:1880/ui
+   - Tài khoản đăng nhập: hung | Mật khẩu: 1
+
+3. **Truy cập Online từ xa qua Internet (Ngrok Tunnel):**
+   - Nhấp đúp vào file Chay_Ngrok_Online.bat trên màn hình Desktop (hoặc trong thư mục dự án).
+   - Truy cập từ bất kỳ thiết bị nào qua link: https://motto-skeletal-gambling.ngrok-free.dev/ui/
 
 ---
 
