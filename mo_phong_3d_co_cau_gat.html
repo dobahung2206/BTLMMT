@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mô Hình 3D Chuẩn Cơ Khí: Cơ Cấu Thanh Gạt & Solenoid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Three.js + OrbitControls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow: hidden; }
+    #canvas-container { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: 1; }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 select-none">
+
+  <!-- 3D WEBGL CANVAS CONTAINER -->
+  <div id="canvas-container"></div>
+
+  <!-- FLOATING UI: TOP HEADER -->
+  <div class="fixed top-4 left-4 right-4 z-10 flex flex-wrap justify-between items-center gap-3 pointer-events-none">
+    <div id="topHeaderPanel" class="glass-panel p-4 rounded-2xl shadow-2xl pointer-events-auto max-w-xl transition-all duration-300">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🔧</span>
+        <div>
+          <h1 class="text-base font-bold text-sky-400 tracking-wide">
+            MÔ HÌNH 3D: BĂNG TẢI 11 x 40 CM & THANH GẠT CHUẨN KÍCH THƯỚC
+          </h1>
+          <p class="text-xs text-emerald-400 font-medium">
+            ✔ Băng chuyền 110x400mm • Nhánh trên 12mm • Lưỡi gạt 85mm • Cầu gá 124mm • Ty Solenoid 10mm
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESET CAMERA VIEWS & OPACITY TOGGLE -->
+    <div class="glass-panel p-2 rounded-xl shadow-xl flex flex-wrap gap-1.5 pointer-events-auto">
+      <button onclick="setCameraView('mech')" class="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs shadow transition">
+        🔍 Cận Cảnh Cơ Cấu Gạt
+      </button>
+      <button onclick="setCameraView('sensor')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition">
+        📡 Xem Khung Cảm Biến M12
+      </button>
+      <button onclick="setCameraView('top')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition">
+        🔝 Nhìn Từ Trên
+      </button>
+      <button onclick="setCameraView('iso')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition">
+        🌐 Toàn Cảnh 3D
+      </button>
+      <button id="btnToggleXRay" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-semibold transition">
+        👁️ Nhìn Xuyên Thấu (X-Ray)
+      </button>
+      <button id="btnToggleLabels" class="px-2.5 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1" title="Bấm hoặc nhấn phím 'L' để Ẩn / Hiện các nhãn chữ 3D">
+        🏷️ Ẩn Chữ 3D
+      </button>
+      <button id="btnToggleUI" class="px-2.5 py-1.5 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/40 text-xs font-semibold transition flex items-center gap-1" title="Bấm hoặc nhấn phím 'U' để Ẩn / Hiện các khung chữ thông tin trên màn hình">
+        🔲 Ẩn Khung Chữ (UI)
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING UI: BOTTOM INTERACTIVE CONTROLS -->
+  <div class="fixed bottom-4 left-4 right-4 z-10 flex flex-wrap justify-between items-end gap-3 pointer-events-none">
+    
+    <!-- INTERACTIVE ACTION BUTTONS -->
+    <div class="glass-panel p-4 rounded-2xl shadow-2xl pointer-events-auto flex flex-wrap gap-2.5 max-w-2xl items-center">
+      <button id="btnToggleSolenoid" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-amber-500/20 transition flex items-center gap-2">
+        <span id="solenoidIcon">⚡</span> <span id="solenoidText">BẬT SOLENOID (ĐẨY RA 40°)</span>
+      </button>
+
+      <button id="btnSpawnMetal" class="px-3.5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-semibold text-xs active:scale-95 transition flex items-center gap-1.5">
+        <span>⚙️</span> Thả Phôi Kim Loại [Fe]
+      </button>
+
+      <button id="btnSpawnPlastic" class="px-3.5 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 font-semibold text-xs active:scale-95 transition flex items-center gap-1.5">
+        <span>⚪</span> Thả Phôi Phi Kim [Nhựa]
+      </button>
+
+      <div class="h-6 w-[1px] bg-slate-700 hidden sm:block"></div>
+
+      <div class="text-xs font-mono text-slate-300 flex items-center gap-2">
+        <span>Góc gạt:</span>
+        <span id="badgeAngle" class="text-amber-400 font-bold bg-slate-900 px-2 py-0.5 rounded border border-slate-700">0.0°</span>
+      </div>
+    </div>
+
+    <!-- MECHANICAL DETAILS BREAKDOWN CARD -->
+    <div id="mechDetailsPanel" class="glass-panel p-3.5 rounded-2xl shadow-2xl pointer-events-auto max-w-md text-xs space-y-1.5 hidden md:block transition-all duration-300">
+      <div class="font-bold text-sky-400 flex items-center justify-between">
+        <span>📐 Băng tải 110 x 400 mm:</span>
+        <span class="text-[10px] text-amber-400 font-mono">Chuẩn ốc M3</span>
+      </div>
+      <div class="text-[11px] text-slate-300 space-y-1 leading-relaxed">
+        <div>• <b>Khung cảm biến 3 miếng:</b> 2 miếng đứng $55\text{mm}$, miếng trên $120\text{mm}$ khoét lỗ $\varnothing 12.5\text{mm}$.</div>
+        <div>• <b>Chu kỳ gạt 4 nhịp:</b> $t=2.0\text{s}$ (duỗi 2.0s) $\rightarrow$ nghỉ 1.7s $\rightarrow t=5.7\text{s}$ (0.5s) $\rightarrow$ nghỉ 1.7s $\rightarrow t=7.9\text{s}$ (0.5s) $\rightarrow$ nghỉ 1.7s $\rightarrow t=10.1\text{s}$ (0.5s) $\rightarrow t=10.6\text{s}$ xong.</div>
+        <div>• <b>Lưỡi gạt dưới:</b> Dài $85\text{mm}$, cao $18\text{mm}$, dày $3\text{mm}$ (quét ngang $58\text{mm}$).</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- THREE.JS SCRIPT -->
+  <script>
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x020617);
+    scene.fog = new THREE.FogExp2(0x020617, 0.0035);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(28, 16, 12);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.maxPolarAngle = Math.PI / 2 + 0.05;
+    controls.target.set(16, 4, 0);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+
+    const mainLight = new THREE.DirectionalLight(0xffffff, 0.9);
+    mainLight.position.set(25, 35, 20);
+    mainLight.castShadow = true;
+    mainLight.shadow.mapSize.width = 2048;
+    mainLight.shadow.mapSize.height = 2048;
+    mainLight.shadow.bias = -0.0003;
+    scene.add(mainLight);
+
+    const fillBlue = new THREE.PointLight(0x38bdf8, 0.8, 45);
+    fillBlue.position.set(10, 8, -12);
+    scene.add(fillBlue);
+
+    const fillAmber = new THREE.PointLight(0xf59e0b, 0.9, 45);
+    fillAmber.position.set(20, 10, 10);
+    scene.add(fillAmber);
+
+    const grid = new THREE.GridHelper(80, 40, 0x1e293b, 0x0f172a);
+    grid.position.y = -0.05;
+    scene.add(grid);
+
+    const matPrintedBlue = new THREE.MeshStandardMaterial({ color: 0x436186, roughness: 0.5, metalness: 0.1 });
+    const matBedSurface = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.7 });
+    const matBelt = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.85 });
+    const matSteel = new THREE.MeshStandardMaterial({ color: 0xd1d5db, metalness: 0.85, roughness: 0.2 });
+    const matCopper = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.7, roughness: 0.35 });
+    const matMotorBody = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.7, roughness: 0.3 });
+    const matFlipperBlade = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.2, roughness: 0.3 });
+    const matUpperLever = new THREE.MeshStandardMaterial({ color: 0x0284c7, metalness: 0.4, roughness: 0.3 });
+    const matBridge = new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.35, metalness: 0.15, transparent: true, opacity: 0.95 });
+    const matBinFe = new THREE.MeshStandardMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.45, roughness: 0.2 });
+    const matBinNonFe = new THREE.MeshStandardMaterial({ color: 0x0284c7, transparent: true, opacity: 0.45, roughness: 0.2 });
+
+    const conveyorGroup = new THREE.Group();
+    scene.add(conveyorGroup);
+
+    const CONVEYOR_LEN = 32;
+    const CONVEYOR_WIDTH = 10;
+    const RAIL_HEIGHT = 3.2;
+    const RAIL_THICK = 0.9;
+    const BED_HEIGHT = 1.0;
+
+    const bedGeo = new THREE.BoxGeometry(CONVEYOR_LEN, BED_HEIGHT, CONVEYOR_WIDTH);
+    const bedMesh = new THREE.Mesh(bedGeo, matBedSurface);
+    bedMesh.position.set(0, BED_HEIGHT / 2, 0);
+    bedMesh.receiveShadow = true;
+    conveyorGroup.add(bedMesh);
+
+    const beltGeo = new THREE.BoxGeometry(CONVEYOR_LEN + 0.5, 0.1, CONVEYOR_WIDTH - 0.2);
+    const beltMesh = new THREE.Mesh(beltGeo, matBelt);
+    beltMesh.position.set(0, BED_HEIGHT + 0.05, 0);
+    beltMesh.receiveShadow = true;
+    conveyorGroup.add(beltMesh);
+
+    const railFrontGeo = new THREE.BoxGeometry(CONVEYOR_LEN + 2, RAIL_HEIGHT, RAIL_THICK);
+    const railFront = new THREE.Mesh(railFrontGeo, matPrintedBlue);
+    railFront.position.set(0, RAIL_HEIGHT / 2, - (CONVEYOR_WIDTH / 2 + RAIL_THICK / 2));
+    railFront.castShadow = true;
+    railFront.receiveShadow = true;
+    conveyorGroup.add(railFront);
+
+    const railBack = railFront.clone();
+    railBack.position.z = CONVEYOR_WIDTH / 2 + RAIL_THICK / 2;
+    conveyorGroup.add(railBack);
+
+    for (let sign of [-1, 1]) {
+      const earGeo = new THREE.BoxGeometry(1.6, 1.4, 0.5);
+      const earMesh = new THREE.Mesh(earGeo, matPrintedBlue);
+      earMesh.position.set(0, RAIL_HEIGHT + 0.6, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK / 2));
+      conveyorGroup.add(earMesh);
+
+      const boltGeo = new THREE.CylinderGeometry(0.2, 0.2, 1.2, 8);
+      const boltMesh = new THREE.Mesh(boltGeo, matSteel);
+      boltMesh.rotation.x = Math.PI / 2;
+      boltMesh.position.copy(earMesh.position);
+      conveyorGroup.add(boltMesh);
+    }
+
+    const rollerGeo = new THREE.CylinderGeometry(1.4, 1.4, CONVEYOR_WIDTH, 24);
+    const leftRoller = new THREE.Mesh(rollerGeo, matSteel);
+    leftRoller.rotation.x = Math.PI / 2;
+    leftRoller.position.set(-CONVEYOR_LEN / 2, BED_HEIGHT / 2, 0);
+    conveyorGroup.add(leftRoller);
+
+    const motorGeo = new THREE.CylinderGeometry(1.8, 1.8, 5.5, 24);
+    const motorMesh = new THREE.Mesh(motorGeo, matMotorBody);
+    motorMesh.rotation.x = Math.PI / 2;
+    motorMesh.position.set(-CONVEYOR_LEN / 2, BED_HEIGHT / 2, - (CONVEYOR_WIDTH / 2 + 3.5));
+    conveyorGroup.add(motorMesh);
+
+    const rightRoller = leftRoller.clone();
+    rightRoller.position.x = CONVEYOR_LEN / 2;
+    conveyorGroup.add(rightRoller);
+
+    // ==========================================
+    // KHUNG GÁ CẢM BIẾN M12 (CỔNG VÒM 3 MIẾNG GHÉP LẠI)
+    // ==========================================
+    const sensorGantry = new THREE.Group();
+    sensorGantry.position.set(2.0, 0, 0);
+    conveyorGroup.add(sensorGantry);
+
+    const GANTRY_HEIGHT = 5.5;
+    const GANTRY_PILLAR_W = 3.5;
+    const GANTRY_THICK = 0.45;
+
+    for (let sign of [-1, 1]) {
+      const pillarGeo = new THREE.BoxGeometry(GANTRY_PILLAR_W, GANTRY_HEIGHT, GANTRY_THICK);
+      const pillarMesh = new THREE.Mesh(pillarGeo, matPrintedBlue);
+      pillarMesh.position.set(0, GANTRY_HEIGHT / 2 + 0.5, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK + GANTRY_THICK / 2));
+      pillarMesh.castShadow = true;
+      sensorGantry.add(pillarMesh);
+
+      const scrGeo = new THREE.CylinderGeometry(0.18, 0.18, 1.2, 8);
+      const scrMesh = new THREE.Mesh(scrGeo, matSteel);
+      scrMesh.rotation.x = Math.PI / 2;
+      scrMesh.position.set(0, 2.0, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK));
+      sensorGantry.add(scrMesh);
+    }
+
+    const topBeamGeo = new THREE.BoxGeometry(GANTRY_PILLAR_W, 0.45, CONVEYOR_WIDTH + RAIL_THICK * 2 + 1.8);
+    const topBeam = new THREE.Mesh(topBeamGeo, matBridge);
+    topBeam.position.set(0, GANTRY_HEIGHT + 0.5, 0);
+    topBeam.castShadow = true;
+    sensorGantry.add(topBeam);
+
+    const sensorBodyGeo = new THREE.CylinderGeometry(0.6, 0.6, 4.5, 20);
+    const sensorBody = new THREE.Mesh(sensorBodyGeo, matSteel);
+    sensorBody.position.set(0, GANTRY_HEIGHT - 0.8, 0);
+    sensorGantry.add(sensorBody);
+
+    const nutM12Geo = new THREE.CylinderGeometry(0.9, 0.9, 0.35, 6);
+    const nutTop = new THREE.Mesh(nutM12Geo, matCopper);
+    nutTop.position.set(0, GANTRY_HEIGHT + 0.8, 0);
+    sensorGantry.add(nutTop);
+
+    const nutBottom = new THREE.Mesh(nutM12Geo, matCopper);
+    nutBottom.position.set(0, GANTRY_HEIGHT + 0.2, 0);
+    sensorGantry.add(nutBottom);
+
+    const blueTipGeo = new THREE.CylinderGeometry(0.58, 0.58, 0.6, 20);
+    const blueTipMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.3 });
+    const blueTipMesh = new THREE.Mesh(blueTipGeo, blueTipMat);
+    blueTipMesh.position.set(0, GANTRY_HEIGHT - 3.2, 0);
+    sensorGantry.add(blueTipMesh);
+
+    const ledGeo = new THREE.SphereGeometry(0.2, 10, 10);
+    const ledMat = new THREE.MeshBasicMaterial({ color: 0x334155 });
+    const ledMesh = new THREE.Mesh(ledGeo, ledMat);
+    ledMesh.position.set(0, GANTRY_HEIGHT + 1.6, 0);
+    sensorGantry.add(ledMesh);
+
+    const cableGeo = new THREE.CylinderGeometry(0.12, 0.12, 1.5, 8);
+    const cableMesh = new THREE.Mesh(cableGeo, matMotorBody);
+    cableMesh.position.set(0, GANTRY_HEIGHT + 2.4, 0);
+    sensorGantry.add(cableMesh);
+
+    const allTextSprites = [];
+    function makeTextSprite(text, color, bgColor) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 280;
+      canvas.height = 70;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = bgColor || 'rgba(15, 23, 42, 0.88)';
+      ctx.roundRect(0, 0, 280, 70, 16);
+      ctx.fill();
+      ctx.strokeStyle = color || '#38bdf8';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      ctx.fillStyle = color || '#ffffff';
+      ctx.font = 'bold 25px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, 140, 35);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.scale.set(6.5, 1.7, 1);
+      allTextSprites.push(sprite);
+      return sprite;
+    }
+
+    const labelSensor = makeTextSprite('Cảm Biến LJ12A3 (M12)', '#fbbf24');
+    labelSensor.position.set(2.0, GANTRY_HEIGHT + 3.8, 0);
+    conveyorGroup.add(labelSensor);
+
+    // =========================================================================
+    // BỘ 2 THANH NẮN LÀN ĐỊNH TÂM PHÔI (V-GUIDE CENTERING RAILS)
+    // =========================================================================
+    const guideRailsGroup = new THREE.Group();
+    conveyorGroup.add(guideRailsGroup);
+
+    const matGuideRail = new THREE.MeshStandardMaterial({
+      color: 0x00d2ff,
+      roughness: 0.35,
+      metalness: 0.2
+    });
+
+    for (let sign of [-1, 1]) {
+      // Slanted Funnel Blade (Lùi ra xa cảm biến: từ X = -10.5 đến X = -3.5, cách Sensor gantry 3.5 đơn vị ~35mm!)
+      const funnelShape = new THREE.Shape();
+      funnelShape.moveTo(-10.5, sign * 4.6);
+      funnelShape.lineTo(-4.5, sign * 2.4);
+      funnelShape.lineTo(-3.2, sign * 2.4);
+      funnelShape.lineTo(-3.2, sign * 2.7);
+      funnelShape.lineTo(-4.5, sign * 2.7);
+      funnelShape.lineTo(-10.5, sign * 4.9);
+      funnelShape.closePath();
+
+      const funnelExtrude = new THREE.ExtrudeGeometry(funnelShape, { depth: 1.6, bevelEnabled: false });
+      funnelExtrude.rotateX(-Math.PI / 2);
+      const funnelMesh = new THREE.Mesh(funnelExtrude, matGuideRail);
+      funnelMesh.position.y = 0.8;
+      funnelMesh.castShadow = true;
+      guideRailsGroup.add(funnelMesh);
+
+      // Clamp bracket onto side rail (ở vị trí X = -7.5)
+      const clampArmGeo = new THREE.BoxGeometry(1.6, 0.35, 2.4);
+      const clampArm = new THREE.Mesh(clampArmGeo, matGuideRail);
+      clampArm.position.set(-7.5, 2.0, sign * 3.9);
+      guideRailsGroup.add(clampArm);
+
+      const clampTopGeo = new THREE.BoxGeometry(1.6, 0.35, 1.4);
+      const clampTop = new THREE.Mesh(clampTopGeo, matGuideRail);
+      clampTop.position.set(-7.5, 2.0, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK / 2));
+      guideRailsGroup.add(clampTop);
+
+      const clampOuterLipGeo = new THREE.BoxGeometry(1.6, 0.9, 0.35);
+      const clampOuterLip = new THREE.Mesh(clampOuterLipGeo, matGuideRail);
+      clampOuterLip.position.set(-7.5, 1.6, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK + 0.18));
+      guideRailsGroup.add(clampOuterLip);
+
+      const clampBoltGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.6, 8);
+      const clampBolt = new THREE.Mesh(clampBoltGeo, matSteel);
+      clampBolt.rotation.x = Math.PI / 2;
+      clampBolt.position.set(-7.5, 1.6, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK + 0.35));
+      guideRailsGroup.add(clampBolt);
+    }
+
+    const labelGuide = makeTextSprite('Thanh Nắn Làn (V-Guide)', '#38bdf8');
+    labelGuide.position.set(-7.0, 3.8, 0);
+    conveyorGroup.add(labelGuide);
+
+    // CƠ CẤU GẠT Ở ĐUÔI
+    const DISCHARGE_X = CONVEYOR_LEN / 2;
+    const PIVOT_X = DISCHARGE_X + 1.2;
+    const PIVOT_Z = 0;
+
+    const bridgeAssembly = new THREE.Group();
+    conveyorGroup.add(bridgeAssembly);
+
+    const BRIDGE_Y = RAIL_HEIGHT;
+    const BRIDGE_THICK = 0.6;
+
+    const bridgePlateGeo = new THREE.BoxGeometry(5.0, BRIDGE_THICK, CONVEYOR_WIDTH + RAIL_THICK * 2 + 0.8);
+    const bridgePlate = new THREE.Mesh(bridgePlateGeo, matBridge);
+    bridgePlate.position.set(PIVOT_X, BRIDGE_Y + BRIDGE_THICK / 2, 0);
+    bridgePlate.castShadow = true;
+    bridgePlate.receiveShadow = true;
+    bridgeAssembly.add(bridgePlate);
+
+    for (let sign of [-1, 1]) {
+      const clampGeo = new THREE.BoxGeometry(4.0, 1.6, 0.6);
+      const clampMesh = new THREE.Mesh(clampGeo, matBridge);
+      clampMesh.position.set(PIVOT_X, BRIDGE_Y - 0.5, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK + 0.2));
+      bridgeAssembly.add(clampMesh);
+
+      const clampBoltGeo = new THREE.CylinderGeometry(0.2, 0.2, 1.2, 8);
+      const clampBolt = new THREE.Mesh(clampBoltGeo, matSteel);
+      clampBolt.rotation.x = Math.PI / 2;
+      clampBolt.position.set(PIVOT_X, BRIDGE_Y - 0.5, sign * (CONVEYOR_WIDTH / 2 + RAIL_THICK + 0.2));
+      bridgeAssembly.add(clampBolt);
+    }
+
+    const flipperGroup = new THREE.Group();
+    flipperGroup.position.set(PIVOT_X, 0, PIVOT_Z);
+    conveyorGroup.add(flipperGroup);
+
+    const hubGeo = new THREE.CylinderGeometry(0.55, 0.55, 4.4, 20);
+    const hubMesh = new THREE.Mesh(hubGeo, matUpperLever);
+    hubMesh.position.y = 2.8;
+    flipperGroup.add(hubMesh);
+
+    const upperArmGeo = new THREE.BoxGeometry(2.4, 0.8, 0.45);
+    const upperArmMesh = new THREE.Mesh(upperArmGeo, matUpperLever);
+    upperArmMesh.position.set(1.2, 4.3, 0);
+    upperArmMesh.castShadow = true;
+    flipperGroup.add(upperArmMesh);
+
+    const contactPadGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.5, 12);
+    const contactPad = new THREE.Mesh(contactPadGeo, matSteel);
+    contactPad.rotation.x = Math.PI / 2;
+    contactPad.position.set(2.2, 4.3, -0.3);
+    flipperGroup.add(contactPad);
+
+    const springPinGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.6, 8);
+    const springPin = new THREE.Mesh(springPinGeo, matSteel);
+    springPin.position.set(2.2, 4.8, 0);
+    flipperGroup.add(springPin);
+
+    const bladeGeo = new THREE.BoxGeometry(7.0, 1.2, 0.35);
+    const bladeMesh = new THREE.Mesh(bladeGeo, matFlipperBlade);
+    bladeMesh.position.set(-3.5, 1.6, 0);
+    bladeMesh.castShadow = true;
+    flipperGroup.add(bladeMesh);
+
+    const bladeTipGeo = new THREE.ConeGeometry(0.6, 1.4, 4);
+    const bladeTip = new THREE.Mesh(bladeTipGeo, matFlipperBlade);
+    bladeTip.rotation.z = Math.PI / 2;
+    bladeTip.position.set(-7.2, 1.6, 0);
+    flipperGroup.add(bladeTip);
+
+    const boltM3Geo = new THREE.CylinderGeometry(0.18, 0.18, 5.2, 12);
+    const boltM3 = new THREE.Mesh(boltM3Geo, matSteel);
+    boltM3.position.set(PIVOT_X, 2.8, PIVOT_Z);
+    conveyorGroup.add(boltM3);
+
+    const lockNutGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.35, 6);
+    const lockNut = new THREE.Mesh(lockNutGeo, matSteel);
+    lockNut.position.set(PIVOT_X, 5.4, PIVOT_Z);
+    conveyorGroup.add(lockNut);
+
+    const solenoidAssembly = new THREE.Group();
+    solenoidAssembly.position.set(PIVOT_X + 2.2, BRIDGE_Y + BRIDGE_THICK, -3.2);
+    bridgeAssembly.add(solenoidAssembly);
+
+    const solBodyGeo = new THREE.BoxGeometry(2.2, 1.5, 2.8);
+    const solBody = new THREE.Mesh(solBodyGeo, matSteel);
+    solBody.position.set(0, 0.75, 0);
+    solBody.castShadow = true;
+    solenoidAssembly.add(solBody);
+
+    const coilGeo = new THREE.CylinderGeometry(0.55, 0.55, 2.2, 16);
+    const coilMesh = new THREE.Mesh(coilGeo, matCopper);
+    coilMesh.rotation.x = Math.PI / 2;
+    coilMesh.position.set(0, 0.75, 0);
+    solenoidAssembly.add(coilMesh);
+
+    const solBaseGeo = new THREE.BoxGeometry(2.8, 0.15, 3.2);
+    const solBase = new THREE.Mesh(solBaseGeo, matSteel);
+    solBase.position.set(0, 0.08, 0);
+    solenoidAssembly.add(solBase);
+
+    for (let x of [-1.0, 1.0]) {
+      const screwGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.3, 8);
+      const screw = new THREE.Mesh(screwGeo, matSteel);
+      screw.position.set(x, 0.2, 1.3);
+      solenoidAssembly.add(screw);
+    }
+
+    const plungerGeo = new THREE.CylinderGeometry(0.24, 0.24, 2.8, 12);
+    const plungerMesh = new THREE.Mesh(plungerGeo, matSteel);
+    plungerMesh.rotation.x = Math.PI / 2;
+    plungerMesh.position.set(0, 0.75, 1.2);
+    solenoidAssembly.add(plungerMesh);
+
+    const plungerTipGeo = new THREE.SphereGeometry(0.26, 12, 12);
+    const plungerTip = new THREE.Mesh(plungerTipGeo, matSteel);
+    plungerTip.position.set(0, 0.75, 2.6);
+    solenoidAssembly.add(plungerTip);
+
+    const springAnchorGeo = new THREE.CylinderGeometry(0.15, 0.15, 1.0, 8);
+    const springAnchor = new THREE.Mesh(springAnchorGeo, matSteel);
+    springAnchor.position.set(PIVOT_X + 2.2, BRIDGE_Y + BRIDGE_THICK + 0.5, 2.5);
+    bridgeAssembly.add(springAnchor);
+
+    const springMaterial = new THREE.LineBasicMaterial({ color: 0xf59e0b, linewidth: 2 });
+    const springGeo = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(PIVOT_X + 2.2, 4.8, 0),
+      new THREE.Vector3(PIVOT_X + 2.2, 4.8, 2.5)
+    ]);
+    const springLine = new THREE.Line(springGeo, springMaterial);
+    conveyorGroup.add(springLine);
+
+    const BIN_WIDTH = 8.0;
+    const BIN_LEN = 9.0;
+    const BIN_DEPTH = 5.0;
+
+    const binNonFeGeo = new THREE.BoxGeometry(BIN_LEN, BIN_DEPTH, BIN_WIDTH);
+    const binNonFe = new THREE.Mesh(binNonFeGeo, matBinNonFe);
+    binNonFe.position.set(DISCHARGE_X + 6.8, -0.6, (CONVEYOR_WIDTH / 2 + BIN_WIDTH / 2 - 1.5));
+    conveyorGroup.add(binNonFe);
+
+    const wireNonFe = new THREE.LineSegments(new THREE.EdgesGeometry(binNonFeGeo), new THREE.LineBasicMaterial({ color: 0x38bdf8 }));
+    binNonFe.add(wireNonFe);
+
+    const binFeGeo = new THREE.BoxGeometry(BIN_LEN, BIN_DEPTH, BIN_WIDTH);
+    const binFe = new THREE.Mesh(binFeGeo, matBinFe);
+    binFe.position.set(DISCHARGE_X + 6.8, -0.6, -(CONVEYOR_WIDTH / 2 + BIN_WIDTH / 2 - 1.5));
+    conveyorGroup.add(binFe);
+
+    const wireFe = new THREE.LineSegments(new THREE.EdgesGeometry(binFeGeo), new THREE.LineBasicMaterial({ color: 0xf59e0b }));
+    binFe.add(wireFe);
+
+    const labelNonFe = makeTextSprite('Khay Phi Kim (Trên)', '#38bdf8');
+    labelNonFe.position.set(DISCHARGE_X + 6.8, 3.8, (CONVEYOR_WIDTH / 2 + BIN_WIDTH / 2 - 1.5));
+    conveyorGroup.add(labelNonFe);
+
+    const labelFe = makeTextSprite('Khay Kim Loại (Dưới)', '#f59e0b');
+    labelFe.position.set(DISCHARGE_X + 6.8, 3.8, -(CONVEYOR_WIDTH / 2 + BIN_WIDTH / 2 - 1.5));
+    conveyorGroup.add(labelFe);
+
+    const labelMech = makeTextSprite('Trục Bản Lề O (M3)', '#34d399');
+    labelMech.position.set(PIVOT_X, 6.4, PIVOT_Z);
+    conveyorGroup.add(labelMech);
+
+    let workpieces = [];
+
+    function spawnWorkpiece(isMetal) {
+      const cylGeo = new THREE.CylinderGeometry(0.9, 0.9, 1.0, 20);
+      const mat = new THREE.MeshStandardMaterial({
+        color: isMetal ? 0xf59e0b : 0xe2e8f0,
+        metalness: isMetal ? 0.85 : 0.05,
+        roughness: isMetal ? 0.25 : 0.6
+      });
+      const mesh = new THREE.Mesh(cylGeo, mat);
+      mesh.castShadow = true;
+      // Spawn with slight realistic random lateral drift
+      const randomOffsetZ = (Math.random() - 0.5) * 4.4; // from -2.2 to +2.2
+      mesh.position.set(-CONVEYOR_LEN / 2 + 2, BED_HEIGHT + 0.55, randomOffsetZ);
+      scene.add(mesh);
+
+      workpieces.push({ mesh: mesh, isMetal: isMetal, state: 'on_belt', vy: 0 });
+    }
+
+    let isSolenoidEnergized = false;
+    let targetAngle = -0.35;
+    let currentAngle = -0.35;
+    const MAX_TILT = 0.35;
+
+    const btnToggle = document.getElementById('btnToggleSolenoid');
+    const solenoidIcon = document.getElementById('solenoidIcon');
+    const solenoidText = document.getElementById('solenoidText');
+    const badgeAngle = document.getElementById('badgeAngle');
+    const btnSpawnMetal = document.getElementById('btnSpawnMetal');
+    const btnSpawnPlastic = document.getElementById('btnSpawnPlastic');
+    const btnToggleXRay = document.getElementById('btnToggleXRay');
+
+    let isXRay = false;
+    btnToggleXRay.addEventListener('click', () => {
+      isXRay = !isXRay;
+      matBridge.opacity = isXRay ? 0.35 : 0.95;
+      matBridge.needsUpdate = true;
+      btnToggleXRay.innerText = isXRay ? "👁️ Tắt X-Ray (Đục)" : "👁️ Nhìn Xuyên Thấu (X-Ray)";
+    });
+
+    const btnToggleLabels = document.getElementById('btnToggleLabels');
+    const btnToggleUI = document.getElementById('btnToggleUI');
+    const topHeaderPanel = document.getElementById('topHeaderPanel');
+    const mechDetailsPanel = document.getElementById('mechDetailsPanel');
+
+    let areLabelsVisible = true;
+    function toggleLabels() {
+      areLabelsVisible = !areLabelsVisible;
+      allTextSprites.forEach(sprite => {
+        sprite.visible = areLabelsVisible;
+      });
+      if (btnToggleLabels) {
+        if (areLabelsVisible) {
+          btnToggleLabels.innerHTML = '🏷️ Ẩn Chữ 3D';
+          btnToggleLabels.className = 'px-2.5 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center gap-1';
+        } else {
+          btnToggleLabels.innerHTML = '🏷️ Hiện Chữ 3D';
+          btnToggleLabels.className = 'px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 text-xs font-semibold transition flex items-center gap-1';
+        }
+      }
+    }
+    if (btnToggleLabels) btnToggleLabels.addEventListener('click', toggleLabels);
+
+    let isUIVisible = true;
+    function toggleUI() {
+      isUIVisible = !isUIVisible;
+      if (topHeaderPanel) topHeaderPanel.style.display = isUIVisible ? 'block' : 'none';
+      if (mechDetailsPanel) mechDetailsPanel.style.display = isUIVisible ? 'block' : 'none';
+      if (btnToggleUI) {
+        if (isUIVisible) {
+          btnToggleUI.innerHTML = '🔲 Ẩn Khung Chữ (UI)';
+          btnToggleUI.className = 'px-2.5 py-1.5 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/40 text-xs font-semibold transition flex items-center gap-1';
+        } else {
+          btnToggleUI.innerHTML = '🔲 Hiện Khung Chữ (UI)';
+          btnToggleUI.className = 'px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 text-xs font-semibold transition flex items-center gap-1';
+        }
+      }
+    }
+    if (btnToggleUI) btnToggleUI.addEventListener('click', toggleUI);
+
+    // Phím tắt tiện lợi: L (Toggle 3D Labels), U (Toggle UI Panels)
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'l' || e.key === 'L') {
+        toggleLabels();
+      } else if (e.key === 'u' || e.key === 'U') {
+        toggleUI();
+      }
+    });
+
+    btnToggle.addEventListener('click', () => {
+      isSolenoidEnergized = !isSolenoidEnergized;
+      if (isSolenoidEnergized) {
+        targetAngle = MAX_TILT;
+        solenoidIcon.innerText = "🛑";
+        solenoidText.innerText = "NGẮT SOLENOID (LÒ XO VỀ)";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-sky-500/20 transition flex items-center gap-2";
+      } else {
+        targetAngle = -0.35;
+        solenoidIcon.innerText = "⚡";
+        solenoidText.innerText = "BẬT SOLENOID (ĐẨY RA 40°)";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-amber-500/20 transition flex items-center gap-2";
+      }
+    });
+
+    let cycleTimers = [];
+    function runFourStrokeSolenoidSequence() {
+      // Clear any pending cycle timers
+      cycleTimers.forEach(clearTimeout);
+      cycleTimers = [];
+
+      // t = 2.0s: Bắt đầu duỗi lần 1 (giữ 2.0s)
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = true;
+        targetAngle = MAX_TILT;
+        solenoidIcon.innerText = "🛑";
+        solenoidText.innerText = "NHỊP 1: DUỖI 2.0s";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-sky-500/20 transition flex items-center gap-2";
+      }, 2000));
+
+      // t = 4.0s (sau 2.0s): Dừng duỗi lần 1, nghỉ 1.7s
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = false;
+        targetAngle = -0.35;
+        solenoidIcon.innerText = "⏸️";
+        solenoidText.innerText = "NGHỈ 1.7s (LẦN 1)";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-slate-700 text-slate-300 font-bold text-xs tracking-wide transition flex items-center gap-2";
+      }, 4000));
+
+      // t = 5.7s (sau 1.7s nghỉ): Duỗi lần 2 (0.5s)
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = true;
+        targetAngle = MAX_TILT;
+        solenoidIcon.innerText = "⚡";
+        solenoidText.innerText = "NHỊP 2: DUỖI 0.5s";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-amber-500/20 transition flex items-center gap-2";
+      }, 5700));
+
+      // t = 6.2s (sau 0.5s): Dừng duỗi lần 2, nghỉ 1.7s
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = false;
+        targetAngle = -0.35;
+        solenoidIcon.innerText = "⏸️";
+        solenoidText.innerText = "NGHỈ 1.7s (LẦN 2)";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-slate-700 text-slate-300 font-bold text-xs tracking-wide transition flex items-center gap-2";
+      }, 6200));
+
+      // t = 7.9s (sau 1.7s nghỉ): Duỗi lần 3 (0.5s)
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = true;
+        targetAngle = MAX_TILT;
+        solenoidIcon.innerText = "⚡";
+        solenoidText.innerText = "NHỊP 3: DUỖI 0.5s";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-amber-500/20 transition flex items-center gap-2";
+      }, 7900));
+
+      // t = 8.4s (sau 0.5s): Dừng duỗi lần 3, nghỉ 1.7s
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = false;
+        targetAngle = -0.35;
+        solenoidIcon.innerText = "⏸️";
+        solenoidText.innerText = "NGHỈ 1.7s (LẦN 3)";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-slate-700 text-slate-300 font-bold text-xs tracking-wide transition flex items-center gap-2";
+      }, 8400));
+
+      // t = 10.1s (sau 1.7s nghỉ): Duỗi lần 4 ngắn (0.5s dứt điểm)
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = true;
+        targetAngle = MAX_TILT;
+        solenoidIcon.innerText = "⚡";
+        solenoidText.innerText = "NHỊP 4: DUỖI 0.5s (DỨT ĐIỂM)";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-emerald-500/20 transition flex items-center gap-2";
+      }, 10100));
+
+      // t = 10.6s (sau 0.5s): Dừng duỗi lần 4, kết thúc vòng lặp
+      cycleTimers.push(setTimeout(() => {
+        isSolenoidEnergized = false;
+        targetAngle = -0.35;
+        solenoidIcon.innerText = "⚡";
+        solenoidText.innerText = "CHU KỲ 4 NHỊP (CHỜ LỆNH)";
+        btnToggle.className = "px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs tracking-wide shadow-lg shadow-amber-500/20 transition flex items-center gap-2";
+      }, 10600));
+    }
+
+    btnSpawnMetal.addEventListener('click', () => {
+      runFourStrokeSolenoidSequence();
+      spawnWorkpiece(true);
+    });
+
+    btnSpawnPlastic.addEventListener('click', () => {
+      if (isSolenoidEnergized) btnToggle.click();
+      spawnWorkpiece(false);
+    });
+
+    window.setCameraView = function(view) {
+      switch(view) {
+        case 'mech':
+          camera.position.set(PIVOT_X + 11, BRIDGE_Y + 9, 9);
+          controls.target.set(PIVOT_X, BRIDGE_Y + 1.2, 0);
+          break;
+        case 'sensor':
+          camera.position.set(2.0 + 8, GANTRY_HEIGHT + 6, 8);
+          controls.target.set(2.0, GANTRY_HEIGHT - 1.0, 0);
+          break;
+        case 'top':
+          camera.position.set(PIVOT_X, 36, 0.01);
+          controls.target.set(PIVOT_X, 0, 0);
+          break;
+        case 'iso':
+          camera.position.set(22, 26, 32);
+          controls.target.set(0, 3, 0);
+          break;
+      }
+    };
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      currentAngle += (targetAngle - currentAngle) * 0.12;
+      flipperGroup.rotation.y = currentAngle;
+
+      const progress = (currentAngle - (-0.35)) / (MAX_TILT - (-0.35));
+      const plungerStrokeZ = 1.2 + progress * 0.9;
+      plungerMesh.position.z = plungerStrokeZ;
+      plungerTip.position.z = plungerStrokeZ + 1.4;
+
+      const springTipX = PIVOT_X + 2.4 * Math.cos(currentAngle);
+      const springTipZ = PIVOT_Z - 2.4 * Math.sin(currentAngle);
+      springLine.geometry.setFromPoints([
+        new THREE.Vector3(springTipX, 4.3, springTipZ),
+        new THREE.Vector3(PIVOT_X + 2.2, 4.3, 2.5)
+      ]);
+
+      const sweepAngleDeg = Math.abs((currentAngle - (-0.35)) * 180 / Math.PI).toFixed(1);
+      badgeAngle.innerText = `${sweepAngleDeg}°`;
+
+      let isMetalUnderSensor = false;
+      for (let i = 0; i < workpieces.length; i++) {
+        if (workpieces[i].isMetal && Math.abs(workpieces[i].mesh.position.x - 2.0) < 1.2) {
+          isMetalUnderSensor = true;
+          break;
+        }
+      }
+      ledMat.color.setHex(isMetalUnderSensor ? 0xf59e0b : 0x334155);
+
+      for (let i = workpieces.length - 1; i >= 0; i--) {
+        const wp = workpieces[i];
+        
+        if (wp.state === 'on_belt') {
+          wp.mesh.position.x += 0.16;
+
+          // Centering Funnel Physics (Lùi ra X = -10.5 đến -3.2): phôi được nắn vào tâm Z=0 trước khi tới Sensor!
+          if (wp.mesh.position.x >= -10.5 && wp.mesh.position.x <= -3.2) {
+            const currentZ = wp.mesh.position.z;
+            const progress = (wp.mesh.position.x - (-10.5)) / 7.3;
+            const maxCorridorZ = 4.2 - progress * (4.2 - 1.4);
+            if (currentZ > maxCorridorZ) wp.mesh.position.z = maxCorridorZ;
+            if (currentZ < -maxCorridorZ) wp.mesh.position.z = -maxCorridorZ;
+          } else if (wp.mesh.position.x > -3.2 && wp.mesh.position.x <= 1.5) {
+            // Sau khi ra khỏi phễu, phôi chạy thẳng tắp trong làn 2.8 (~28mm) qua Sensor
+            if (wp.mesh.position.z > 1.4) wp.mesh.position.z = 1.4;
+            if (wp.mesh.position.z < -1.4) wp.mesh.position.z = -1.4;
+          }
+
+          const bladeTipX = PIVOT_X - 7.0 * Math.cos(currentAngle);
+          if (wp.mesh.position.x >= bladeTipX - 0.5) {
+            wp.state = 'deflecting';
+          }
+        } 
+        else if (wp.state === 'deflecting') {
+          wp.mesh.position.x += 0.12;
+          if (currentAngle > 0) {
+            wp.mesh.position.z -= 0.16;
+          } else {
+            wp.mesh.position.z += 0.16;
+          }
+
+          if (wp.mesh.position.x >= DISCHARGE_X + 2.0) {
+            wp.state = 'dropped';
+          }
+        }
+        else if (wp.state === 'dropped') {
+          wp.mesh.position.x += 0.08;
+          wp.vy -= 0.03;
+          wp.mesh.position.y += wp.vy;
+
+          if (wp.mesh.position.y < -3.0) {
+            scene.remove(wp.mesh);
+            workpieces.splice(i, 1);
+          }
+        }
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    animate();
+    setCameraView('mech');
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
