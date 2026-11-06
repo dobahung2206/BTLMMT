@@ -116,18 +116,24 @@ Trong giao diện quản lý Palette của Node-RED (`Manage palette`), cài đ�
 * `node-red-contrib-modbus`
 * `node-red-dashboard`
 
-### 3. Khởi chạy & Vận hành
-1. Mở trình duyệt và truy cập vào trang lập trình: `http://localhost:1880`.
-2. Chọn **Menu (góc trên bên phải) -> Import**, chọn file [`flows.json`](flows.json) trong thư mục dự án này.
-3. Nhấp đúp vào node cấu hình **`Modbus-Client`**:
-   * Kiểm tra và chỉnh sửa cổng Serial Port (`COMx` trên Windows hoặc `/dev/ttyUSBx` trên Linux) cho khớp với cáp USB-RS485 nhận diện trong *Device Manager*.
-   * Tốc độ Baudrate mặc định: `9600`, Data bits: `8`, Stop bits: `1`, Parity: `None`.
-4. Nhấn nút **Deploy** màu đỏ ở góc trên bên phải.
-5. Truy cập giao diện điều khiển SCADA tại:
-   👉 **`http://localhost:1880/ui`**
+### 3. Hướng dẫn Vận hành Trực tiếp & Truy cập Online từ xa
+
+1. **Khởi động Node-RED:**
+   - Mở Terminal chạy lệnh: 
+ode-red
+   - Node-RED sẽ tự động kết nối cổng phần cứng COM4 với thông số 9600-8-N-1, Slave ID 255.
+
+2. **Truy cập Giao diện Web SCADA Cục bộ:**
+   - Mở trình duyệt truy cập: http://localhost:1880/ui
+   - Tài khoản đăng nhập: hung | Mật khẩu: 1
+
+3. **Truy cập Online từ xa qua Internet (Ngrok Tunnel):**
+   - Nhấp đúp vào file Chay_Ngrok_Online.bat trên màn hình Desktop (hoặc trong thư mục dự án).
+   - Truy cập từ bất kỳ thiết bị nào qua link: https://motto-skeletal-gambling.ngrok-free.dev/ui/
 
 ---
 
 ## 🎯 Kết luận
 
 Dự án đã mô phỏng thành công một mô hình hệ thống sản xuất công nghiệp thực tế. Bằng việc kết hợp giao thức truyền thông **Modbus RTU** ổn định, tin cậy cùng sự linh hoạt, trực quan của nền tảng **Node-RED**, hệ thống không chỉ thực hiện chuẩn xác nghiệp vụ phân loại vật lý mà còn cung cấp khả năng giám sát và thu thập dữ liệu (**Data Acquisition - SCADA**) mạnh mẽ, đáp ứng các tiêu chuẩn cốt lõi trong kỷ nguyên **Công nghiệp 4.0**.
+
