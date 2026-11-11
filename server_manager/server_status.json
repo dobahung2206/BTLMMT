@@ -10,9 +10,9 @@
   "ngrok_alive": true,
   "public_url": "https://motto-skeletal-gambling.ngrok-free.dev",
   "public_ui_url": "https://motto-skeletal-gambling.ngrok-free.dev/ui/",
-  "uptime_seconds": 15406,
+  "uptime_seconds": 17771,
   "started_at": "2026-11-11 11:08:51",
-  "last_check": "2026-11-11 15:25:37",
+  "last_check": "2026-11-11 16:05:03",
   "backend_restarts": 0,
   "ngrok_restarts": 0
 }
